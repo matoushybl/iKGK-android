@@ -17,10 +17,46 @@
         android:orientation="vertical">
 
         <com.mat.hyb.school.isas.view.MainButton_
+            android:id="@+id/marks"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="some shit" />
+            android:layout_marginBottom="8dp"
+            android:text="@string/marks" />
 
+        <com.mat.hyb.school.isas.view.MainButton_
+            android:id="@+id/substitution"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/substitution" />
+
+        <com.mat.hyb.school.isas.view.MainButton_
+            android:id="@+id/timetable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/timetable" />
+
+        <com.mat.hyb.school.isas.view.MainButton_
+            android:id="@+id/moodle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/moodle" />
+
+        <com.mat.hyb.school.isas.view.MainButton_
+            android:id="@+id/canteen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/canteen" />
+
+        <com.mat.hyb.school.isas.view.MainButton_
+            android:id="@+id/website"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/website" />
     </LinearLayout>
 
 </ScrollView>
