@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.Window;
 import android.webkit.HttpAuthHandler;
@@ -68,7 +67,6 @@ public class BrowserActivity extends Activity {
 
             @Override
             public void onReceivedHttpAuthRequest(WebView view, final HttpAuthHandler handler, String host, String realm) {
-                Log.e("host", host);
                 String username = null;
                 String password = null;
 
@@ -104,6 +102,8 @@ public class BrowserActivity extends Activity {
         });
         webView.getSettings().setBuiltInZoomControls(true);
         webView.getSettings().setDisplayZoomControls(false);
+        webView.getSettings().setUseWideViewPort(true);
+        webView.getSettings().setLoadWithOverviewMode(true);
         webView.loadUrl(url);
     }
 

@@ -22,12 +22,20 @@ public class MainActivity extends Activity {
     @StringRes
     String marks;
 
+    @StringRes
+    String canteen;
+
     @Click
     void marksClicked() {
         BrowserActivity_.intent(getApplicationContext()).title(marks)
                 .flags(Intent.FLAG_ACTIVITY_NEW_TASK).url("http://gymkyjov.cz:8082").start();
     }
 
+    @Click
+    void canteenClicked() {
+        BrowserActivity_.intent(getApplicationContext()).title(canteen)
+                .flags(Intent.FLAG_ACTIVITY_NEW_TASK).url("http://gymkyjov.cz:8082").start();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
