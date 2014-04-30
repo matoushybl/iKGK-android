@@ -1,6 +1,7 @@
 package com.mat.hyb.school.isas.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Window;
@@ -9,12 +10,20 @@ import android.view.WindowManager;
 import com.mat.hyb.school.isas.R;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsMenu;
 
 @OptionsMenu(R.menu.main)
 @EActivity(R.layout.activity_main)
 public class MainActivity extends Activity {
+
+    @Click
+    void marksClicked() {
+        BrowserActivity_.intent(getApplicationContext())
+                .flags(Intent.FLAG_ACTIVITY_NEW_TASK).url("http://google.com").start();
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
