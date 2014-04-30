@@ -25,7 +25,7 @@ public class MainActivity extends Activity {
     @Click
     void marksClicked() {
         BrowserActivity_.intent(getApplicationContext()).title(marks)
-                .flags(Intent.FLAG_ACTIVITY_NEW_TASK).url("http://google.com").start();
+                .flags(Intent.FLAG_ACTIVITY_NEW_TASK).url("http://gymkyjov.cz:8082").start();
     }
 
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:xliff="http://schemas.android.com/apk/res/android">
 
     <string name="app_name">iSAS</string>
     <string name="hello_world">Hello world!</string>
@@ -14,5 +14,9 @@
     <string name="forward">Forward</string>
     <string name="open">Open in browser</string>
     <string name="refresh">Refresh</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
+    <string name="action">Sign in</string>
+    <string name="sign_in_to">Sign in to <xliff:g id="hostname">%s1</xliff:g> \"<xliff:g id="realm">%s2</xliff:g>\"</string>
 
 </resources>
