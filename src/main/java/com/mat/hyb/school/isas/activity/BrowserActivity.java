@@ -31,9 +31,19 @@ public class BrowserActivity extends Activity {
     @Extra("url")
     String url;
 
+    @Extra("title")
+    String title;
+
     @AfterViews
     void init() {
         setProgressBarIndeterminateVisibility(true);
+        if (title != null) {
+            setTitle(title);
+        }
+    }
+
+    @AfterViews
+    void initBrowser() {
         webView.setWebChromeClient(new WebChromeClient() {
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
@@ -45,12 +55,9 @@ public class BrowserActivity extends Activity {
         webView.setWebViewClient(new WebViewClient() {
 
         });
+        webView.getSettings().setBuiltInZoomControls(true);
+        webView.getSettings().setDisplayZoomControls(false);
         webView.loadUrl(url);
-    }
-
-    @AfterViews
-    void initBrowser() {
-
     }
 
     @Override

@@ -13,14 +13,18 @@ import com.readystatesoftware.systembartint.SystemBarTintManager;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsMenu;
+import org.androidannotations.annotations.res.StringRes;
 
 @OptionsMenu(R.menu.main)
 @EActivity(R.layout.activity_main)
 public class MainActivity extends Activity {
 
+    @StringRes
+    String marks;
+
     @Click
     void marksClicked() {
-        BrowserActivity_.intent(getApplicationContext())
+        BrowserActivity_.intent(getApplicationContext()).title(marks)
                 .flags(Intent.FLAG_ACTIVITY_NEW_TASK).url("http://google.com").start();
     }
 
