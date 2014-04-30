@@ -1,4 +1,4 @@
-package com.mat.hyb.school.isas;
+package com.mat.hyb.school.isas.activity;
 
 import android.app.Activity;
 import android.os.Build;
@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.mat.hyb.school.isas.R;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 import org.androidannotations.annotations.EActivity;
