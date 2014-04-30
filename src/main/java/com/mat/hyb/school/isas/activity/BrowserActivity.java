@@ -2,6 +2,7 @@ package com.mat.hyb.school.isas.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.Window;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
@@ -53,7 +54,11 @@ public class BrowserActivity extends Activity {
             }
         });
         webView.setWebViewClient(new WebViewClient() {
-
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+                invalidateOptionsMenu();
+            }
         });
         webView.getSettings().setBuiltInZoomControls(true);
         webView.getSettings().setDisplayZoomControls(false);
@@ -69,7 +74,7 @@ public class BrowserActivity extends Activity {
     }
 
     @OptionsItem(android.R.id.home)
-    void back() {
+    void home() {
         this.finish();
     }
 
@@ -77,5 +82,28 @@ public class BrowserActivity extends Activity {
     void refresh() {
         setProgressBarIndeterminateVisibility(true);
         webView.reload();
+    }
+
+    @OptionsItem
+    void backward() {
+        if (webView.canGoBack()) {
+            webView.goBack();
+        }
+    }
+
+    @OptionsItem
+    void forward() {
+        if (webView.canGoForward()) {
+            webView.goForward();
+        }
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        if (webView != null) {
+            menu.findItem(R.id.forward).setEnabled(webView.canGoForward());
+            menu.findItem(R.id.backward).setEnabled(webView.canGoBack());
+        }
+        return true;
     }
 }
