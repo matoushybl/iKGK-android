@@ -12,31 +12,31 @@ import org.androidannotations.annotations.EBean;
 @EBean
 public class PreferenceProvider {
 
-    private SharedPreferences sharedPreferences;
     private static final String CLASS = "class";
     private static final String FIRST_RUN = "first";
+    private SharedPreferences sharedPreferences;
 
     public PreferenceProvider(Context context) {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
     }
 
-    public int getDefaultClass() {
-        return sharedPreferences.getInt(CLASS, 13);
+    public ClassID getDefaultClass() {
+        return ClassID.getEnumByName(ClassID.values(), sharedPreferences.getString(CLASS, "sxA"));
     }
 
-    public void setDefaultClass(int id) {
+    public void setDefaultClass(ClassID id) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt(CLASS, id);
+        editor.putString(CLASS, id.getName());
         editor.commit();
     }
 
     public void setFirstRun() {
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean(FIRST_RUN, true);
+        editor.putBoolean(FIRST_RUN, false);
         editor.commit();
     }
 
     public boolean isFirstRun() {
-        return sharedPreferences.getBoolean(FIRST_RUN, false);
+        return sharedPreferences.getBoolean(FIRST_RUN, true);
     }
 }

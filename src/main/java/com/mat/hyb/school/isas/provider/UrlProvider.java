@@ -35,7 +35,7 @@ public class UrlProvider {
     }
 
     public String getSubstitutionTodayUrl() {
-        return SUBSTITUTION_URL + String.valueOf(new ClassIdProvider().getClassId(preferencesProvider.getDefaultClass()));
+        return SUBSTITUTION_URL + String.valueOf(preferencesProvider.getDefaultClass().getId());
     }
 
     public String getSubstitutionTomorrowUrl() {
@@ -56,11 +56,11 @@ public class UrlProvider {
     }
 
     private String getSavedClass() {
-        return String.valueOf(new ClassIdProvider().getClassId(preferencesProvider.getDefaultClass()));
+        return String.valueOf(preferencesProvider.getDefaultClass().getId());
     }
 
     private int getSavedClassId() {
-        return new ClassIdProvider().getClassId(preferencesProvider.getDefaultClass());
+        return preferencesProvider.getDefaultClass().getId();
     }
 
     public String getTimetableUrl(int id) {

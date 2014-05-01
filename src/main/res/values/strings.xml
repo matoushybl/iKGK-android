@@ -18,5 +18,6 @@
     <string name="username">Username</string>
     <string name="action">Sign in</string>
     <string name="sign_in_to">Sign in to <xliff:g id="hostname">%s1</xliff:g> \"<xliff:g id="realm">%s2</xliff:g>\"</string>
+    <string name="class_dialog_title">Set class…</string>
 
 </resources>
