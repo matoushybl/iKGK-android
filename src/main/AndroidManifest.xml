@@ -20,6 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.BrowserActivity_" />
+        <activity android:name=".activity.TimetableActivity_" />
     </application>
 
 </manifest>
