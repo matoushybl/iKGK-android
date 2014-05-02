@@ -83,7 +83,7 @@ public class MainActivity extends Activity {
     @Click
     void substitutionClicked() {
         SubstitutionActivity_.intent(getApplicationContext()).title(substitution)
-                .flags(Intent.FLAG_ACTIVITY_NEW_TASK).url(urlProvider.getSubstitutionTodayUrl())
+                .flags(Intent.FLAG_ACTIVITY_NEW_TASK).url(urlProvider.getSuggestedDateUrl())
                 .start();
     }
 

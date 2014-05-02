@@ -47,11 +47,27 @@ public class UrlProvider {
 
     private String getTomorrowDate() {
         Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.DAY_OF_YEAR, 1);
-        Log.d("month", String.valueOf(calendar.get(Calendar.MONTH)));
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        int day = calendar.get(Calendar.DAY_OF_WEEK);
+        if (day == 6 && calendar.get(Calendar.HOUR_OF_DAY) > 16) {
+            calendar.add(Calendar.DAY_OF_YEAR, 3);
+        } else if (day == 7) {
+            calendar.add(Calendar.DAY_OF_YEAR, 2);
+        } else {
+            calendar.add(Calendar.DAY_OF_YEAR, 1);
+        }
         return String.valueOf(calendar.get(Calendar.YEAR)) + "-"
                 + String.valueOf(calendar.get(Calendar.MONTH) + 1) + "-"
                 + String.valueOf(calendar.get(Calendar.DAY_OF_MONTH));
+    }
+
+    public String getSuggestedDateUrl() {
+        Calendar calendar = Calendar.getInstance();
+        if (calendar.get(Calendar.HOUR_OF_DAY) > 16) {
+            return getSubstitutionTomorrowUrl();
+        } else {
+            return getSubstitutionTodayUrl();
+        }
     }
 
     private String getSavedClass() {
