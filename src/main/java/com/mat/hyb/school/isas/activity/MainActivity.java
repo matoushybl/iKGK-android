@@ -43,6 +43,12 @@ public class MainActivity extends Activity {
     @StringRes
     String moodle;
 
+    @StringRes
+    String website;
+
+    @StringRes
+    String substitution;
+
     @Click
     void marksClicked() {
         BrowserActivity_.intent(getApplicationContext()).title(marks)
@@ -66,6 +72,19 @@ public class MainActivity extends Activity {
     void moodleClicked() {
         BrowserActivity_.intent(getApplicationContext()).title(moodle)
                 .flags(Intent.FLAG_ACTIVITY_NEW_TASK).url(urlProvider.getMoodleUrl()).start();
+    }
+
+    @Click
+    void websiteClicked() {
+        BrowserActivity_.intent(getApplicationContext()).title(website)
+                .flags(Intent.FLAG_ACTIVITY_NEW_TASK).url(UrlProvider.WEBSITE).start();
+    }
+
+    @Click
+    void substitutionClicked() {
+        SubstitutionActivity_.intent(getApplicationContext()).title(substitution)
+                .flags(Intent.FLAG_ACTIVITY_NEW_TASK).url(urlProvider.getSubstitutionTodayUrl())
+                .start();
     }
 
     @AfterInject

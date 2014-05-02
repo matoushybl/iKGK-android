@@ -13,6 +13,7 @@ import java.util.Calendar;
 @EBean
 public class UrlProvider {
 
+    public static final String WEBSITE = "http://www.gymkyjov.cz/";
     private static final String MOODLE_URL = "http://www.gymkyjov.cz/moodle";
     private static final String CANTEEN_URL = "http://www.gymkyjov.cz:8082";
     private static final String SUBSTITUTION_URL =
@@ -21,8 +22,6 @@ public class UrlProvider {
     private static final String MARKS = "http://www.gymkyjov.cz/isas/prubezna-klasifikace.php";
     private static final String TIMETABLE =
             "http://www.gymkyjov.cz/isas/rozvrh-hodin.php?zobraz=tridy-1&rozvrh=";
-    public static final String WEBSITE = "http://www.gymkyjov.cz/";
-
     @Bean
     PreferenceProvider preferencesProvider;
 
@@ -35,7 +34,7 @@ public class UrlProvider {
     }
 
     public String getSubstitutionTodayUrl() {
-        return SUBSTITUTION_URL + String.valueOf(preferencesProvider.getDefaultClass().getId());
+        return SUBSTITUTION_URL + getSavedClass();
     }
 
     public String getSubstitutionTomorrowUrl() {

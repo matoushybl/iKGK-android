@@ -21,5 +21,7 @@
     <string name="class_dialog_title">Set class…</string>
     <string name="my_class">My class</string>
     <string name="other_class">Other class</string>
+    <string name="today">Today</string>
+    <string name="nextDay">Next day</string>
 
 </resources>
