@@ -34,14 +34,14 @@ public class ClassChooserDialog extends Dialog {
     void init() {
         setCancelable(false);
         ListView listView = new ListView(getContext());
-        classes = ClassID.getNames(ClassID.values());
+        classes = ClassID.getNames();
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
                 android.R.layout.simple_list_item_1, classes);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                selectedListener.selected(ClassID.getEnumByName(ClassID.values(), classes.get(i)));
+                selectedListener.selected(ClassID.getEnumByName(classes.get(i)));
                 dismiss();
             }
         });

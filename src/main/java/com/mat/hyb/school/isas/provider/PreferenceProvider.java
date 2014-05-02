@@ -21,7 +21,7 @@ public class PreferenceProvider {
     }
 
     public ClassID getDefaultClass() {
-        return ClassID.getEnumByName(ClassID.values(), sharedPreferences.getString(CLASS, "sxA"));
+        return ClassID.getEnumByName(sharedPreferences.getString(CLASS, "sxA"));
     }
 
     public void setDefaultClass(ClassID id) {

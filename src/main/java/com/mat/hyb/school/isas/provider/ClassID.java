@@ -43,9 +43,9 @@ public enum ClassID {
         return id;
     }
 
-    public static List<String> getNames(ClassID[] ids) {
+    public static List<String> getNames() {
         List<String> names = new ArrayList<String>();
-        for (ClassID enu : ids) {
+        for (ClassID enu : ClassID.values()) {
             names.add(enu.getName());
         }
         return names;
@@ -55,8 +55,8 @@ public enum ClassID {
         return valueOf(string);
     }
 
-    public static ClassID getEnumByName(ClassID[] ids, String name) {
-        for (ClassID id : ids) {
+    public static ClassID getEnumByName(String name) {
+        for (ClassID id : ClassID.values()) {
             if (id.getName().equals(name)) {
                 return id;
             }
