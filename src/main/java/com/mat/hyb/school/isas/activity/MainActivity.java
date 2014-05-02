@@ -40,6 +40,9 @@ public class MainActivity extends Activity {
     @StringRes
     String timetable;
 
+    @StringRes
+    String moodle;
+
     @Click
     void marksClicked() {
         BrowserActivity_.intent(getApplicationContext()).title(marks)
@@ -57,6 +60,12 @@ public class MainActivity extends Activity {
     void canteenClicked() {
         BrowserActivity_.intent(getApplicationContext()).title(canteen)
                 .flags(Intent.FLAG_ACTIVITY_NEW_TASK).url(urlProvider.getCanteenUrl()).start();
+    }
+
+    @Click
+    void moodleClicked() {
+        BrowserActivity_.intent(getApplicationContext()).title(moodle)
+                .flags(Intent.FLAG_ACTIVITY_NEW_TASK).url(urlProvider.getMoodleUrl()).start();
     }
 
     @AfterInject
