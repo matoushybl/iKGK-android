@@ -14,6 +14,7 @@ public class PreferenceProvider {
 
     private static final String CLASS = "class";
     private static final String FIRST_RUN = "first";
+    private static final String OPEN = "open";
     private SharedPreferences sharedPreferences;
 
     public PreferenceProvider(Context context) {
@@ -34,6 +35,10 @@ public class PreferenceProvider {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean(FIRST_RUN, false);
         editor.commit();
+    }
+
+    public boolean isOpeningInBrowserEnabled() {
+        return sharedPreferences.getBoolean(OPEN, false);
     }
 
     public boolean isFirstRun() {

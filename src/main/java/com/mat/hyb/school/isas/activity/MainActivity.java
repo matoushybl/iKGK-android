@@ -1,6 +1,7 @@
 package com.mat.hyb.school.isas.activity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Window;
@@ -18,6 +19,7 @@ import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.res.StringRes;
 
@@ -51,39 +53,63 @@ public class MainActivity extends SherlockActivity {
 
     @Click
     void marksClicked() {
-        MarksActivity_.intent(getApplicationContext()).title(marks)
-                .flags(Intent.FLAG_ACTIVITY_NEW_TASK).url(urlProvider.getMarksUrl()).start();
+        if (preferenceProvider.isOpeningInBrowserEnabled()) {
+            openInBrowser(urlProvider.getMarksUrl());
+        } else {
+            MarksActivity_.intent(getApplicationContext()).title(marks)
+                    .flags(Intent.FLAG_ACTIVITY_NEW_TASK).url(urlProvider.getMarksUrl()).start();
+        }
     }
 
     @Click
     void timetableClicked() {
-        TimetableActivity_.intent(getApplicationContext()).flags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                .url(urlProvider.getOurTimetableUrl()).title(timetable).start();
+        if (preferenceProvider.isOpeningInBrowserEnabled()) {
+            openInBrowser(urlProvider.getOurTimetableUrl());
+        } else {
+            TimetableActivity_.intent(getApplicationContext()).flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    .url(urlProvider.getOurTimetableUrl()).title(timetable).start();
+        }
     }
 
     @Click
     void canteenClicked() {
-        BrowserActivity_.intent(getApplicationContext()).title(canteen)
-                .flags(Intent.FLAG_ACTIVITY_NEW_TASK).url(urlProvider.getCanteenUrl()).start();
+        if (preferenceProvider.isOpeningInBrowserEnabled()) {
+            openInBrowser(urlProvider.getCanteenUrl());
+        } else {
+            BrowserActivity_.intent(getApplicationContext()).title(canteen)
+                    .flags(Intent.FLAG_ACTIVITY_NEW_TASK).url(urlProvider.getCanteenUrl()).start();
+        }
     }
 
     @Click
     void moodleClicked() {
-        BrowserActivity_.intent(getApplicationContext()).title(moodle)
-                .flags(Intent.FLAG_ACTIVITY_NEW_TASK).url(urlProvider.getMoodleUrl()).start();
+        if (preferenceProvider.isOpeningInBrowserEnabled()) {
+            openInBrowser(urlProvider.getMoodleUrl());
+        } else {
+            BrowserActivity_.intent(getApplicationContext()).title(moodle)
+                    .flags(Intent.FLAG_ACTIVITY_NEW_TASK).url(urlProvider.getMoodleUrl()).start();
+        }
     }
 
     @Click
     void websiteClicked() {
-        BrowserActivity_.intent(getApplicationContext()).title(website)
-                .flags(Intent.FLAG_ACTIVITY_NEW_TASK).url(UrlProvider.WEBSITE).start();
+        if (preferenceProvider.isOpeningInBrowserEnabled()) {
+            openInBrowser(UrlProvider.WEBSITE);
+        } else {
+            BrowserActivity_.intent(getApplicationContext()).title(website)
+                    .flags(Intent.FLAG_ACTIVITY_NEW_TASK).url(UrlProvider.WEBSITE).start();
+        }
     }
 
     @Click
     void substitutionClicked() {
-        SubstitutionActivity_.intent(getApplicationContext()).title(substitution)
-                .flags(Intent.FLAG_ACTIVITY_NEW_TASK).url(urlProvider.getSuggestedDateUrl())
-                .start();
+        if (preferenceProvider.isOpeningInBrowserEnabled()) {
+            openInBrowser(urlProvider.getSuggestedDateUrl());
+        } else {
+            SubstitutionActivity_.intent(getApplicationContext()).title(substitution)
+                    .flags(Intent.FLAG_ACTIVITY_NEW_TASK).url(urlProvider.getSuggestedDateUrl())
+                    .start();
+        }
     }
 
     @AfterInject
@@ -99,6 +125,18 @@ public class MainActivity extends SherlockActivity {
             dialog.show();
             preferenceProvider.setFirstRun();
         }
+    }
+
+    @OptionsItem
+    void settings() {
+        SettingsActivity_.intent(getApplicationContext())
+                .flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
+    }
+
+    public void openInBrowser(String url) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(url));
+        startActivity(intent);
     }
 
     @Override

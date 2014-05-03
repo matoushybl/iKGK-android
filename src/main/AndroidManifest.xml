@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:allowBackup="true"
@@ -23,6 +24,8 @@
         <activity android:name=".activity.TimetableActivity_" />
         <activity android:name=".activity.SubstitutionActivity_" />
         <activity android:name=".activity.MarksActivity_" />
+        <activity android:name=".activity.SettingsActivity_" />
+
     </application>
 
 </manifest>

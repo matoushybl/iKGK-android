@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/open_group_title">
+        <CheckBoxPreference
+            android:key="open"
+            android:summary="@string/open_preference_summary"
+            android:title="@string/open_preference_title" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/about_group_title">
+        <Preference
+            android:key="author"
+            android:title="@string/author_preference_title" />
+
+        <Preference
+            android:key="app_version"
+            android:title="@string/version_preference_title" />
+    </PreferenceCategory>
+</PreferenceScreen>
