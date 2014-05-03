@@ -1,12 +1,12 @@
 package com.mat.hyb.school.isas.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.WindowManager;
-import android.webkit.HttpAuthHandler;
+import android.webkit.CookieManager;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -14,7 +14,6 @@ import android.webkit.WebViewClient;
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Window;
 import com.mat.hyb.school.isas.R;
-import com.mat.hyb.school.isas.view.HttpAuthenticationDialog;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 import org.androidannotations.annotations.AfterViews;
@@ -24,14 +23,15 @@ import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
 
-import android.webkit.CookieManager;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
- * Created by matous on 30.4.14 for iSAS.
+ * Created by matous on 3.5.14 for iSAS.
  */
 @OptionsMenu(R.menu.browser)
 @EActivity(R.layout.activity_browser)
-public class BrowserActivity extends SherlockActivity {
+public class MarksActivity extends SherlockActivity {
 
     @ViewById
     WebView webView;
@@ -52,7 +52,6 @@ public class BrowserActivity extends SherlockActivity {
 
     @AfterViews
     void initBrowser() {
-        final Activity activity = this;
         CookieManager.getInstance().setAcceptCookie(true);
         webView.setWebChromeClient(new WebChromeClient() {
             @Override
@@ -67,41 +66,6 @@ public class BrowserActivity extends SherlockActivity {
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
                 supportInvalidateOptionsMenu();
-            }
-
-            @Override
-            public void onReceivedHttpAuthRequest(WebView view, final HttpAuthHandler handler, String host, String realm) {
-                String username = null;
-                String password = null;
-
-                if (handler.useHttpAuthUsernamePassword()) {
-                    String[] credentials = view.getHttpAuthUsernamePassword(host, realm);
-                    if (credentials != null && credentials.length == 2) {
-                        username = credentials[0];
-                        password = credentials[1];
-                    }
-                }
-
-                if (username != null && password != null) {
-                    handler.proceed(username, password);
-                } else {
-                    HttpAuthenticationDialog dialog
-                            = new HttpAuthenticationDialog(activity, host, realm);
-                    dialog.setOkListener(new HttpAuthenticationDialog.OkListener() {
-                        @Override
-                        public void onOk(String host, String realm, String username, String password) {
-                            handler.proceed(username, password);
-                        }
-                    });
-
-                    dialog.setCancelListener(new HttpAuthenticationDialog.CancelListener() {
-                        @Override
-                        public void onCancel() {
-                            handler.cancel();
-                        }
-                    });
-                    dialog.show();
-                }
             }
         });
         webView.getSettings().setBuiltInZoomControls(true);

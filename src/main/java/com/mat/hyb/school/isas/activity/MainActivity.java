@@ -1,6 +1,5 @@
 package com.mat.hyb.school.isas.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -52,7 +51,7 @@ public class MainActivity extends SherlockActivity {
 
     @Click
     void marksClicked() {
-        BrowserActivity_.intent(getApplicationContext()).title(marks)
+        MarksActivity_.intent(getApplicationContext()).title(marks)
                 .flags(Intent.FLAG_ACTIVITY_NEW_TASK).url(urlProvider.getMarksUrl()).start();
     }
 
