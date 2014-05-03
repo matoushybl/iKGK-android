@@ -120,10 +120,10 @@ public class MainActivity extends SherlockActivity {
                 @Override
                 public void selected(ClassID id) {
                     preferenceProvider.setDefaultClass(id);
+                    preferenceProvider.setFirstRun();
                 }
             });
             dialog.show();
-            preferenceProvider.setFirstRun();
         }
     }
 
