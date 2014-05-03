@@ -1,8 +1,10 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
-        <item name="android:actionBarStyle">@style/ActionBar.Solid.Orange</item>
+    <style name="AppTheme" parent="Theme.Sherlock.Light.DarkActionBar">
+        <item name="android:actionBarStyle">@style/ActionBar.Solid.Orangesherlock</item>
+        <item name="actionBarStyle">@style/ActionBar.Solid.Orangesherlock</item>
+
     </style>
 
 </resources>

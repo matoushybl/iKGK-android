@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.actionbarsherlock.app.SherlockActivity;
 import com.mat.hyb.school.isas.R;
 import com.mat.hyb.school.isas.provider.ClassID;
 import com.mat.hyb.school.isas.provider.PreferenceProvider;
@@ -23,7 +24,7 @@ import org.androidannotations.annotations.res.StringRes;
 
 @OptionsMenu(R.menu.main)
 @EActivity(R.layout.activity_main)
-public class MainActivity extends Activity {
+public class MainActivity extends SherlockActivity {
 
     @Bean
     UrlProvider urlProvider;
@@ -115,7 +116,7 @@ public class MainActivity extends Activity {
             systemBarTintManager.setStatusBarTintEnabled(true);
             systemBarTintManager.setNavigationBarTintEnabled(true);
         }
-        getActionBar().setIcon(R.drawable.ic_ab);
+        getSupportActionBar().setIcon(R.drawable.ic_ab);
     }
 
 }

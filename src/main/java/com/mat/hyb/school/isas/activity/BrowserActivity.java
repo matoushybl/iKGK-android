@@ -3,14 +3,15 @@ package com.mat.hyb.school.isas.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.Window;
 import android.webkit.HttpAuthHandler;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.Window;
 import com.mat.hyb.school.isas.R;
 import com.mat.hyb.school.isas.view.HttpAuthenticationDialog;
 
@@ -26,9 +27,8 @@ import org.androidannotations.annotations.WindowFeature;
  * Created by matous on 30.4.14 for iSAS.
  */
 @OptionsMenu(R.menu.browser)
-@WindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS)
 @EActivity(R.layout.activity_browser)
-public class BrowserActivity extends Activity {
+public class BrowserActivity extends SherlockActivity {
 
     @ViewById
     WebView webView;
@@ -41,7 +41,7 @@ public class BrowserActivity extends Activity {
 
     @AfterViews
     void init() {
-        setProgressBarIndeterminateVisibility(true);
+        setSupportProgressBarIndeterminateVisibility(true);
         if (title != null) {
             setTitle(title);
         }
@@ -54,7 +54,7 @@ public class BrowserActivity extends Activity {
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
                 if (newProgress == 100) {
-                    setProgressBarIndeterminateVisibility(false);
+                    setSupportProgressBarIndeterminateVisibility(false);
                 }
             }
         });
@@ -62,7 +62,7 @@ public class BrowserActivity extends Activity {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-                invalidateOptionsMenu();
+                supportInvalidateOptionsMenu();
             }
 
             @Override
@@ -101,7 +101,9 @@ public class BrowserActivity extends Activity {
             }
         });
         webView.getSettings().setBuiltInZoomControls(true);
-        webView.getSettings().setDisplayZoomControls(false);
+        if (Build.VERSION.SDK_INT >= 11) {
+            webView.getSettings().setDisplayZoomControls(false);
+        }
         webView.getSettings().setUseWideViewPort(true);
         webView.getSettings().setLoadWithOverviewMode(true);
         webView.loadUrl(url);
@@ -110,9 +112,10 @@ public class BrowserActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setProgressBarVisibility(true);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
-        getActionBar().setIcon(R.drawable.ic_ab); // needs a transparent icon
+        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+        setSupportProgressBarVisibility(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setIcon(R.drawable.ic_ab); // needs a transparent icon
     }
 
     @OptionsItem(android.R.id.home)
@@ -122,7 +125,7 @@ public class BrowserActivity extends Activity {
 
     @OptionsItem
     void refresh() {
-        setProgressBarIndeterminateVisibility(true);
+        setSupportProgressBarIndeterminateVisibility(true);
         webView.reload();
     }
 
@@ -141,12 +144,12 @@ public class BrowserActivity extends Activity {
     }
 
     @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
+    public boolean onPrepareOptionsMenu(com.actionbarsherlock.view.Menu menu) {
         if (webView != null) {
             menu.findItem(R.id.forward).setEnabled(webView.canGoForward());
             menu.findItem(R.id.backward).setEnabled(webView.canGoBack());
         }
-        return true;
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @OptionsItem

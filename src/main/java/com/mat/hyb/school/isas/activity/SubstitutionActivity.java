@@ -20,13 +20,13 @@ public class SubstitutionActivity extends BrowserActivity {
 
     @OptionsItem
     void today() {
-        setProgressBarIndeterminateVisibility(true);
+        setSupportProgressBarIndeterminateVisibility(true);
         webView.loadUrl(provider.getSubstitutionTodayUrl());
     }
 
     @OptionsItem
     void nextDay() {
-        setProgressBarIndeterminateVisibility(true);
+        setSupportProgressBarIndeterminateVisibility(true);
         webView.loadUrl(provider.getSubstitutionTomorrowUrl());
     }
 }

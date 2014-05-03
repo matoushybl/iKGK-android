@@ -22,13 +22,13 @@ public class TimetableActivity extends BrowserActivity {
 
     @OptionsItem
     void myClass() {
-        setProgressBarIndeterminateVisibility(true);
+        setSupportProgressBarIndeterminateVisibility(true);
         webView.loadUrl(provider.getOurTimetableUrl());
     }
 
     @OptionsItem
     void otherClass() {
-        setProgressBarIndeterminateVisibility(true);
+        setSupportProgressBarIndeterminateVisibility(true);
         ClassChooserDialog dialog = new ClassChooserDialog(this);
         dialog.setSelectedListener(new ClassChooserDialog.ClassSelectedListener() {
             @Override
