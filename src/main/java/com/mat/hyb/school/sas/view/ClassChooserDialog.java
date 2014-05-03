@@ -1,4 +1,4 @@
-package com.mat.hyb.school.isas.view;
+package com.mat.hyb.school.sas.view;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -7,8 +7,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.mat.hyb.school.isas.R;
-import com.mat.hyb.school.isas.provider.ClassID;
+import com.mat.hyb.school.sas.R;
+import com.mat.hyb.school.sas.provider.ClassID;
 
 import java.util.ArrayList;
 import java.util.List;

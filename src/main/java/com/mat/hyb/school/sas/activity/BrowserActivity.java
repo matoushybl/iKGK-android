@@ -1,4 +1,4 @@
-package com.mat.hyb.school.isas.activity;
+package com.mat.hyb.school.sas.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -14,8 +14,8 @@ import android.webkit.WebViewClient;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Window;
-import com.mat.hyb.school.isas.R;
-import com.mat.hyb.school.isas.view.HttpAuthenticationDialog;
+import com.mat.hyb.school.sas.R;
+import com.mat.hyb.school.sas.view.HttpAuthenticationDialog;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 import org.androidannotations.annotations.AfterViews;
@@ -33,6 +33,7 @@ import org.androidannotations.annotations.ViewById;
 public class BrowserActivity extends SherlockActivity {
 
     @ViewById
+    protected
     WebView webView;
 
     @Extra("url")

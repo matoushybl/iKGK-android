@@ -1,4 +1,4 @@
-package com.mat.hyb.school.isas.activity;
+package com.mat.hyb.school.sas.activity;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -8,11 +8,11 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.actionbarsherlock.app.SherlockActivity;
-import com.mat.hyb.school.isas.R;
-import com.mat.hyb.school.isas.provider.ClassID;
-import com.mat.hyb.school.isas.provider.PreferenceProvider;
-import com.mat.hyb.school.isas.provider.UrlProvider;
-import com.mat.hyb.school.isas.view.ClassChooserDialog;
+import com.mat.hyb.school.sas.R;
+import com.mat.hyb.school.sas.provider.ClassID;
+import com.mat.hyb.school.sas.provider.PreferenceProvider;
+import com.mat.hyb.school.sas.provider.UrlProvider;
+import com.mat.hyb.school.sas.view.ClassChooserDialog;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 import org.androidannotations.annotations.AfterInject;

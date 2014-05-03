@@ -1,4 +1,4 @@
-package com.mat.hyb.school.isas.view;
+package com.mat.hyb.school.sas.view;
 
 import android.content.Context;
 import android.os.Build;
@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.widget.Button;
 
-import com.mat.hyb.school.isas.R;
+import com.mat.hyb.school.sas.R;
 
 import org.androidannotations.annotations.EView;
 

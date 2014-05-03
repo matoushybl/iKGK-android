@@ -1,4 +1,4 @@
-package com.mat.hyb.school.isas.provider;
+package com.mat.hyb.school.sas.provider;
 
 import java.util.ArrayList;
 import java.util.List;

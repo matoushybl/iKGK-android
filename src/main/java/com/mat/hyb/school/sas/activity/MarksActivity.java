@@ -1,4 +1,4 @@
-package com.mat.hyb.school.isas.activity;
+package com.mat.hyb.school.sas.activity;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -12,7 +12,7 @@ import android.webkit.WebViewClient;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Window;
-import com.mat.hyb.school.isas.R;
+import com.mat.hyb.school.sas.R;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 import org.androidannotations.annotations.AfterViews;
