@@ -1,7 +1,5 @@
 package com.mat.hyb.school.isas.provider;
 
-import android.util.Log;
-
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
 

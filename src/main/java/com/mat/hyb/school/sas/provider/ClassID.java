@@ -35,14 +35,6 @@ public enum ClassID {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getId() {
-        return id;
-    }
-
     public static List<String> getNames() {
         List<String> names = new ArrayList<String>();
         for (ClassID enu : ClassID.values()) {
@@ -62,5 +54,13 @@ public enum ClassID {
             }
         }
         return SXA;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getId() {
+        return id;
     }
 }

@@ -137,15 +137,18 @@ public class HttpAuthenticationDialog {
                         if (mOkListener != null) {
                             mOkListener.onOk(mHost, mRealm, getUsername(), getPassword());
                         }
-                    }})
-                .setNegativeButton(android.R.string.cancel,new DialogInterface.OnClickListener() {
+                    }
+                })
+                .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         if (mCancelListener != null) mCancelListener.onCancel();
-                    }})
+                    }
+                })
                 .setOnCancelListener(new DialogInterface.OnCancelListener() {
                     public void onCancel(DialogInterface dialog) {
                         if (mCancelListener != null) mCancelListener.onCancel();
-                    }})
+                    }
+                })
                 .create();
 
         // Make the IME appear when the dialog is displayed if applicable.
