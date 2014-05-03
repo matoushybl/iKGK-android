@@ -23,7 +23,7 @@ public class TimetableActivity extends BrowserActivity {
     @OptionsItem
     void myClass() {
         setProgressBarIndeterminateVisibility(true);
-        webView.loadUrl(provider.getDefaultTimetableUrl());
+        webView.loadUrl(provider.getOurTimetableUrl());
     }
 
     @OptionsItem

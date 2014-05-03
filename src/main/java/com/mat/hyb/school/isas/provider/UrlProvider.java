@@ -82,10 +82,6 @@ public class UrlProvider {
         return TIMETABLE + Integer.valueOf(id);
     }
 
-    public String getDefaultTimetableUrl() {
-        return getTimetableUrl(getSavedClassId());
-    }
-
     public String getOurTimetableUrl() {
         return getTimetableUrl(getSavedClassId());
     }

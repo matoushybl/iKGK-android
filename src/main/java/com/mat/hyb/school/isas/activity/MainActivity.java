@@ -58,8 +58,7 @@ public class MainActivity extends Activity {
     @Click
     void timetableClicked() {
         TimetableActivity_.intent(getApplicationContext()).flags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                .url(urlProvider.getTimetableUrl(preferenceProvider.getDefaultClass().getId()))
-                .title(timetable).start();
+                .url(urlProvider.getOurTimetableUrl()).title(timetable).start();
     }
 
     @Click
