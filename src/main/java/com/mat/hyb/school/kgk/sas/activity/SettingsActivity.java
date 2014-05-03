@@ -1,4 +1,4 @@
-package com.mat.hyb.school.sas.activity;
+package com.mat.hyb.school.kgk.sas.activity;
 
 import android.app.NotificationManager;
 import android.content.Intent;
@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.preference.Preference;
 
 import com.actionbarsherlock.app.SherlockPreferenceActivity;
-import com.mat.hyb.school.sas.R;
+import com.mat.hyb.school.kgk.sas.R;
 
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsItem;

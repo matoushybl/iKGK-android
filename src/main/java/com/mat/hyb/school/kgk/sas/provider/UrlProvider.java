@@ -1,4 +1,4 @@
-package com.mat.hyb.school.sas.provider;
+package com.mat.hyb.school.kgk.sas.provider;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;

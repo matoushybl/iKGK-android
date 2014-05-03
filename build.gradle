@@ -19,7 +19,7 @@ repositories {
 apt {
     arguments {
         androidManifestFile variant.processResources.manifestFile
-        resourcePackageName 'com.mat.hyb.school.sas'
+        resourcePackageName 'com.mat.hyb.school.kgk.sas'
     }
 }
 

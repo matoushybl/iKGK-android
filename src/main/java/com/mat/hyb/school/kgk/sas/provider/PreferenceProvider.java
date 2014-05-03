@@ -1,4 +1,4 @@
-package com.mat.hyb.school.sas.provider;
+package com.mat.hyb.school.kgk.sas.provider;
 
 import android.content.Context;
 import android.content.SharedPreferences;

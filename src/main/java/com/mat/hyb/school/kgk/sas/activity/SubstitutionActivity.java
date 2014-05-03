@@ -1,7 +1,7 @@
-package com.mat.hyb.school.sas.activity;
+package com.mat.hyb.school.kgk.sas.activity;
 
-import com.mat.hyb.school.sas.R;
-import com.mat.hyb.school.sas.provider.UrlProvider;
+import com.mat.hyb.school.kgk.sas.R;
+import com.mat.hyb.school.kgk.sas.provider.UrlProvider;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;

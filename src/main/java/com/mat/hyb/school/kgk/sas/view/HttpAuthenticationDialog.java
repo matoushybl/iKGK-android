@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.mat.hyb.school.sas.view;
+package com.mat.hyb.school.kgk.sas.view;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -26,7 +26,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 
-import com.mat.hyb.school.sas.R;
+import com.mat.hyb.school.kgk.sas.R;
 
 /**
  * HTTP authentication dialog.

@@ -1,9 +1,9 @@
-package com.mat.hyb.school.sas.activity;
+package com.mat.hyb.school.kgk.sas.activity;
 
-import com.mat.hyb.school.sas.R;
-import com.mat.hyb.school.sas.provider.ClassID;
-import com.mat.hyb.school.sas.provider.UrlProvider;
-import com.mat.hyb.school.sas.view.ClassChooserDialog;
+import com.mat.hyb.school.kgk.sas.R;
+import com.mat.hyb.school.kgk.sas.provider.ClassID;
+import com.mat.hyb.school.kgk.sas.provider.UrlProvider;
+import com.mat.hyb.school.kgk.sas.view.ClassChooserDialog;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
