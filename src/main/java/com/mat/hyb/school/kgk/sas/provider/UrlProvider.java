@@ -61,7 +61,8 @@ public class UrlProvider {
 
     public String getSuggestedDateUrl() {
         Calendar calendar = Calendar.getInstance();
-        if (calendar.get(Calendar.HOUR_OF_DAY) > 16) {
+        if (calendar.get(Calendar.HOUR_OF_DAY) > 16 || calendar.get(Calendar.DAY_OF_WEEK) >= 6
+                || calendar.get(Calendar.DAY_OF_WEEK) == 1) {
             return getSubstitutionTomorrowUrl();
         } else {
             return getSubstitutionTodayUrl();
