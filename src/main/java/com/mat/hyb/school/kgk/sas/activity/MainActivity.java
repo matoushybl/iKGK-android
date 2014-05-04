@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Browser;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -135,6 +136,7 @@ public class MainActivity extends SherlockActivity {
 
     public void openInBrowser(String url) {
         Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.putExtra(Browser.EXTRA_APPLICATION_ID, getPackageName());
         intent.setData(Uri.parse(url));
         startActivity(intent);
     }
