@@ -130,7 +130,7 @@ public class HttpAuthenticationDialog {
 
         mDialog = new AlertDialog.Builder(mContext)
                 .setTitle(title)
-                .setIconAttribute(android.R.attr.alertDialogIcon)
+                .setIcon(android.R.attr.alertDialogIcon)
                 .setView(v)
                 .setPositiveButton(R.string.action, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
