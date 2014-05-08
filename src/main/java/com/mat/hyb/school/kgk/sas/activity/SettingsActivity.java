@@ -9,7 +9,11 @@ import android.preference.Preference;
 
 import com.actionbarsherlock.app.SherlockPreferenceActivity;
 import com.mat.hyb.school.kgk.sas.R;
+import com.mat.hyb.school.kgk.sas.provider.ClassID;
+import com.mat.hyb.school.kgk.sas.provider.PreferenceProvider;
+import com.mat.hyb.school.kgk.sas.view.ClassChooserDialog;
 
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.SystemService;
@@ -23,6 +27,10 @@ public class SettingsActivity extends SherlockPreferenceActivity {
     private static final String AUTHOR_KEY = "author";
     private static final String VERSION_KEY = "app_version";
     private static final String OPEN_KEY = "open";
+    private static final String CLASS_KEY = "class";
+
+    @Bean
+    PreferenceProvider preferenceProvider;
 
     @SystemService
     NotificationManager notificationManager;
@@ -34,6 +42,25 @@ public class SettingsActivity extends SherlockPreferenceActivity {
         getSupportActionBar().setIcon(R.drawable.ic_ab);
         getSupportActionBar().setTitle(R.string.action_settings);
         addPreferencesFromResource(R.xml.settings);
+
+        final SettingsActivity activity = this;
+        Preference changeClass = findPreference(CLASS_KEY);
+        if (changeClass != null) {
+            changeClass.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    ClassChooserDialog dialog = new ClassChooserDialog(activity);
+                    dialog.setSelectedListener(new ClassChooserDialog.ClassSelectedListener() {
+                        @Override
+                        public void selected(ClassID id) {
+                            preferenceProvider.setDefaultClass(id);
+                        }
+                    });
+                    dialog.show();
+                    return false;
+                }
+            });
+        }
 
         Preference version = findPreference(VERSION_KEY);
         if (version != null && getPackageManager() != null) {

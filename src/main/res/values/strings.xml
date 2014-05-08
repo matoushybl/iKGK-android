@@ -24,7 +24,7 @@
     <string name="today">Today</string>
     <string name="nextDay">Next day</string>
     <string name="open_preference_title">Enable browser opening</string>
-    <string name="open_group_title">Opening</string>
+    <string name="general_group_title">General</string>
     <string name="open_preference_summary">Enable to open pages directly in your browser</string>
     <string name="about_group_title">About app</string>
     <string name="author_preference_title">Author</string>

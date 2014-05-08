@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:title="@string/open_group_title">
+    <PreferenceCategory android:title="@string/general_group_title">
         <CheckBoxPreference
             android:key="open"
             android:summary="@string/open_preference_summary"
             android:title="@string/open_preference_title" />
+        <Preference
+            android:key="class"
+            android:summary="Click to choose different class as default"
+            android:title="Change class" />
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/about_group_title">
