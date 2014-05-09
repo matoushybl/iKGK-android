@@ -28,5 +28,9 @@
     <string name="about_group_title">About app</string>
     <string name="author_preference_title">Author</string>
     <string name="version_preference_title">App version</string>
+    <string name="source_label">Source code</string>
+    <string name="libs_label">Used libraries</string>
+    <string name="change_class_title">Change class</string>
+    <string name="change_class_summary">Click to choose different class as default</string>
 
 </resources>

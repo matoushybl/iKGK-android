@@ -28,5 +28,8 @@
     <string name="about_group_title">O aplikaci</string>
     <string name="author_preference_title">Autor</string>
     <string name="version_preference_title">Verze aplikace</string>
-
+    <string name="source_label">Zdrojový kód</string>
+    <string name="libs_label">Použité knihovny</string>
+    <string name="change_class_title">Změnit třídu</string>
+    <string name="change_class_summary">Klepněte pro změnu výchozí třídy</string>
 </resources>
