@@ -47,7 +47,7 @@ public class UrlProvider {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
         int day = calendar.get(Calendar.DAY_OF_WEEK);
-        if (day == 6 && calendar.get(Calendar.HOUR_OF_DAY) > 16) {
+        if (day == 6 && calendar.get(Calendar.HOUR_OF_DAY) >= 16) {
             calendar.add(Calendar.DAY_OF_YEAR, 3);
         } else if (day == 7) {
             calendar.add(Calendar.DAY_OF_YEAR, 2);
@@ -61,7 +61,7 @@ public class UrlProvider {
 
     public String getSuggestedDateUrl() {
         Calendar calendar = Calendar.getInstance();
-        if (calendar.get(Calendar.HOUR_OF_DAY) > 16 || calendar.get(Calendar.DAY_OF_WEEK) >= 6
+        if (calendar.get(Calendar.HOUR_OF_DAY) >= 16 || calendar.get(Calendar.DAY_OF_WEEK) >= 6
                 || calendar.get(Calendar.DAY_OF_WEEK) == 1) {
             return getSubstitutionTomorrowUrl();
         } else {
