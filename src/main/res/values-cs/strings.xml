@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="http://schemas.android.com/apk/res/android">
+
+    <string name="app_name">iSAS</string>
+    <string name="action_settings">Nastavení</string>
+    <string name="marks">Známky</string>
+    <string name="substitution">Suplování</string>
+    <string name="timetable">Rozvrh hodin</string>
+    <string name="moodle">Moodle</string>
+    <string name="canteen">Obědy</string>
+    <string name="website">školní web</string>
+    <string name="backward">Zpět</string>
+    <string name="forward">Vpřed</string>
+    <string name="open">Otevřít v prohlížeči</string>
+    <string name="refresh">Obnovit</string>
+    <string name="password">Heslo</string>
+    <string name="username">Uživatelské jméno</string>
+    <string name="action">Přihlásit se</string>
+    <string name="sign_in_to">Přihlásit se k <xliff:g id="hostname">%s1</xliff:g> \"<xliff:g id="realm">%s2</xliff:g>\"</string>
+    <string name="class_dialog_title">Nastavení třídy…</string>
+    <string name="my_class">Moje třída</string>
+    <string name="other_class">Jiná třída</string>
+    <string name="today">Dnes</string>
+    <string name="nextDay">Další den</string>
+    <string name="open_preference_title">Povolit otevírání v prohlížeči</string>
+    <string name="general_group_title">Obecné</string>
+    <string name="open_preference_summary">Povolte pro otevírání stránek ve Vašem prohlížeči</string>
+    <string name="about_group_title">O aplikaci</string>
+    <string name="author_preference_title">Autor</string>
+    <string name="version_preference_title">Verze aplikace</string>
+
+</resources>
