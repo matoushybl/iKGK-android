@@ -2,6 +2,7 @@ package com.mat.hyb.school.kgk.sas.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -59,10 +60,19 @@ public class BrowserActivity extends SherlockActivity {
             public void onProgressChanged(WebView view, int newProgress) {
                 if (newProgress == 100) {
                     setSupportProgressBarIndeterminateVisibility(false);
+                } else {
+                    setSupportProgressBarIndeterminateVisibility(true);
                 }
             }
         });
         webView.setWebViewClient(new WebViewClient() {
+
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
+                setSupportProgressBarIndeterminateVisibility(true);
+            }
+
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
