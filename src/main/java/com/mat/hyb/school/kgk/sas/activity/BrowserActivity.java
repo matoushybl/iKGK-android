@@ -120,6 +120,7 @@ public class BrowserActivity extends SherlockActivity {
         }
         webView.getSettings().setUseWideViewPort(true);
         webView.getSettings().setLoadWithOverviewMode(true);
+        webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl(url);
     }
 
