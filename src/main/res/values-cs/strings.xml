@@ -32,4 +32,6 @@
     <string name="libs_label">Použité knihovny</string>
     <string name="change_class_title">Změnit třídu</string>
     <string name="change_class_summary">Klepněte pro změnu výchozí třídy</string>
+    <string name="teacher_button_text">Učitelé</string>
+    <string name="teacher_dialog_title">Nastavení učitele…</string>
 </resources>

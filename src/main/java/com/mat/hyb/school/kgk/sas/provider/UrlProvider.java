@@ -20,6 +20,8 @@ public class UrlProvider {
     private static final String MARKS = "http://www.gymkyjov.cz/isas/prubezna-klasifikace.php";
     private static final String TIMETABLE =
             "http://www.gymkyjov.cz/isas/rozvrh-hodin.php?zobraz=tridy-1&rozvrh=";
+    private static final String TEACHER_TIMETABLE
+            = "http://www.gymkyjov.cz/isas/rozvrh-hodin.php?zobraz=ucitel&rozvrh=";
 
     private static final String TEACHER_SUBSTITUTION_URL
             = "http://www.gymkyjov.cz/isas/suplovani.php?zobraz=suplujici&suplovani=";
@@ -35,11 +37,19 @@ public class UrlProvider {
     }
 
     public String getSubstitutionTodayUrl() {
-        return SUBSTITUTION_URL + getSavedClass();
+        String url = SUBSTITUTION_URL;
+        if (preferencesProvider.isTeacher()) {
+            url = TEACHER_SUBSTITUTION_URL;
+        }
+        return url + getSavedId();
     }
 
     public String getSubstitutionTomorrowUrl() {
-        return SUBSTITUTION_URL + getSavedClass() + DATE + getTomorrowDate();
+        String url = SUBSTITUTION_URL;
+        if (preferencesProvider.isTeacher()) {
+            url = TEACHER_SUBSTITUTION_URL;
+        }
+        return url + getSavedId() + DATE + getTomorrowDate();
     }
 
     public String getMarksUrl() {
@@ -72,7 +82,10 @@ public class UrlProvider {
         }
     }
 
-    private String getSavedClass() {
+    private String getSavedId() {
+        if (preferencesProvider.isTeacher()) {
+            return String.valueOf(preferencesProvider.getTeacherId().getNumber());
+        }
         return String.valueOf(preferencesProvider.getDefaultClass().getId());
     }
 
@@ -81,10 +94,17 @@ public class UrlProvider {
     }
 
     public String getTimetableUrl(int id) {
-        return TIMETABLE + Integer.valueOf(id);
+        String url = TIMETABLE;
+        if (preferencesProvider.isTeacher()) {
+            url = TEACHER_TIMETABLE;
+        }
+        return url + Integer.valueOf(id);
     }
 
     public String getOurTimetableUrl() {
+        if (preferencesProvider.isTeacher()) {
+            return getTimetableUrl(preferencesProvider.getTeacherId().getNumber());
+        }
         return getTimetableUrl(getSavedClassId());
     }
 

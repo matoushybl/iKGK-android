@@ -32,5 +32,7 @@
     <string name="libs_label">Used libraries</string>
     <string name="change_class_title">Change class</string>
     <string name="change_class_summary">Click to choose different class as default</string>
+    <string name="teacher_button_text">Teachers</string>
+    <string name="teacher_dialog_title">Set teacher...</string>
 
 </resources>

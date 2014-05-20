@@ -1,7 +1,9 @@
 package com.mat.hyb.school.kgk.sas.activity;
 
+import com.actionbarsherlock.view.Menu;
 import com.mat.hyb.school.kgk.sas.R;
 import com.mat.hyb.school.kgk.sas.provider.ClassID;
+import com.mat.hyb.school.kgk.sas.provider.PreferenceProvider;
 import com.mat.hyb.school.kgk.sas.provider.UrlProvider;
 import com.mat.hyb.school.kgk.sas.view.ClassChooserDialog;
 
@@ -19,6 +21,9 @@ public class TimetableActivity extends BrowserActivity {
 
     @Bean
     UrlProvider provider;
+
+    @Bean
+    PreferenceProvider preferenceProvider;
 
     @OptionsItem
     void myClass() {
@@ -39,4 +44,12 @@ public class TimetableActivity extends BrowserActivity {
         dialog.show();
     }
 
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        if (preferenceProvider.isTeacher()) {
+            menu.findItem(R.id.myClass).setVisible(false);
+            menu.findItem(R.id.otherClass).setVisible(false);
+        }
+        return super.onPrepareOptionsMenu(menu);
+    }
 }

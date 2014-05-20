@@ -1,12 +1,15 @@
 package com.mat.hyb.school.kgk.sas.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Browser;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.mat.hyb.school.kgk.sas.R;
@@ -16,12 +19,13 @@ import com.mat.hyb.school.kgk.sas.provider.UrlProvider;
 import com.mat.hyb.school.kgk.sas.view.ClassChooserDialog;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 
-import org.androidannotations.annotations.AfterInject;
+import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.OptionsMenu;
+import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.res.StringRes;
 
 @OptionsMenu(R.menu.main)
@@ -51,6 +55,9 @@ public class MainActivity extends SherlockActivity {
 
     @StringRes
     String substitution;
+
+    @ViewById(R.id.marks)
+    Button marksButton;
 
     @Click
     void marksClicked() {
@@ -113,7 +120,7 @@ public class MainActivity extends SherlockActivity {
         }
     }
 
-    @AfterInject
+    @AfterViews
     void init() {
         if (preferenceProvider.isFirstRun()) {
             ClassChooserDialog dialog = new ClassChooserDialog(this);
@@ -124,7 +131,18 @@ public class MainActivity extends SherlockActivity {
                     preferenceProvider.setFirstRun();
                 }
             });
+            dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                @Override
+                public void onDismiss(DialogInterface dialogInterface) {
+                    if (preferenceProvider.isTeacher()) {
+                        marksButton.setVisibility(View.GONE);
+                    }
+                }
+            });
             dialog.show();
+        }
+        if (preferenceProvider.isTeacher()) {
+            marksButton.setVisibility(View.GONE);
         }
     }
 

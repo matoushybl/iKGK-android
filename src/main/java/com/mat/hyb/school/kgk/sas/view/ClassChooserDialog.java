@@ -1,14 +1,20 @@
 package com.mat.hyb.school.kgk.sas.view;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.mat.hyb.school.kgk.sas.R;
 import com.mat.hyb.school.kgk.sas.provider.ClassID;
+import com.mat.hyb.school.kgk.sas.provider.PreferenceProvider;
+import com.mat.hyb.school.kgk.sas.provider.PreferenceProvider_;
+import com.mat.hyb.school.kgk.sas.provider.TeacherID;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,14 +32,22 @@ public class ClassChooserDialog extends Dialog {
         }
     };
 
+    private Activity activity;
+    private PreferenceProvider provider;
+
     public ClassChooserDialog(Context context) {
         super(context);
+        if (context instanceof Activity) {
+            activity = (Activity) context;
+        }
+        provider = PreferenceProvider_.getInstance_(context);
         init();
     }
 
     void init() {
+        setContentView(R.layout.dialog_classchooser);
         setCancelable(false);
-        ListView listView = new ListView(getContext());
+        ListView listView = (ListView) findViewById(R.id.classes);
         classes = ClassID.getNames();
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
                 android.R.layout.simple_list_item_1, classes);
@@ -45,7 +59,30 @@ public class ClassChooserDialog extends Dialog {
                 dismiss();
             }
         });
-        setContentView(listView);
+        final ClassChooserDialog classDialog = this;
+        Button teacher = (Button) findViewById(R.id.teacherButton);
+        teacher.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final TeacherChooserDialog dialog = new TeacherChooserDialog(activity);
+                dialog.setOnDismissListener(new OnDismissListener() {
+                    @Override
+                    public void onDismiss(DialogInterface dialogInterface) {
+                        classDialog.dismiss();
+                    }
+                });
+                dialog.setSelectedListener(new TeacherChooserDialog.TeacherSelectedListener() {
+                    @Override
+                    public void selected(TeacherID id) {
+                        provider.setTeacher();
+                        provider.setTeacherId(id);
+                        provider.setFirstRun();
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
+            }
+        });
         setTitle(getContext().getString(R.string.class_dialog_title));
     }
 

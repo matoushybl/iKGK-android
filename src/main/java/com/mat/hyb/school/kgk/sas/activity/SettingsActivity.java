@@ -66,6 +66,12 @@ public class SettingsActivity extends SherlockPreferenceActivity {
             });
         }
 
+        if (preferenceProvider.isTeacher()) {
+            if (changeClass != null) {
+                changeClass.setEnabled(false);
+            }
+        }
+
         Preference version = findPreference(VERSION_KEY);
         if (version != null && getPackageManager() != null) {
             try {

@@ -57,12 +57,6 @@ public class PreferenceProvider {
         editor.commit();
     }
 
-    public void setUserIsTeacher(boolean is) {
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean(TEACHER, is);
-        editor.commit();
-    }
-
     public TeacherID getTeacherId() {
         return TeacherID.getEnumByName(sharedPreferences.getString(TEACHER_ID, "Mgr. Cvrkal"));
     }
