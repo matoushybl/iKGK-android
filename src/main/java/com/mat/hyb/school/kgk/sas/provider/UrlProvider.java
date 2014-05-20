@@ -20,6 +20,9 @@ public class UrlProvider {
     private static final String MARKS = "http://www.gymkyjov.cz/isas/prubezna-klasifikace.php";
     private static final String TIMETABLE =
             "http://www.gymkyjov.cz/isas/rozvrh-hodin.php?zobraz=tridy-1&rozvrh=";
+
+    private static final String TEACHER_SUBSTITUTION_URL
+            = "http://www.gymkyjov.cz/isas/suplovani.php?zobraz=suplujici&suplovani=";
     @Bean
     PreferenceProvider preferencesProvider;
 

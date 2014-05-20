@@ -15,6 +15,8 @@ public class PreferenceProvider {
     private static final String CLASS = "class";
     private static final String FIRST_RUN = "first";
     private static final String OPEN = "open";
+    private static final String TEACHER = "teacher";
+    private static final String TEACHER_ID = "teacher_id";
     private SharedPreferences sharedPreferences;
 
     public PreferenceProvider(Context context) {
@@ -43,5 +45,31 @@ public class PreferenceProvider {
 
     public boolean isFirstRun() {
         return sharedPreferences.getBoolean(FIRST_RUN, true);
+    }
+
+    public boolean isTeacher() {
+        return sharedPreferences.getBoolean(TEACHER, false);
+    }
+
+    public void setTeacher() {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean(TEACHER, true);
+        editor.commit();
+    }
+
+    public void setUserIsTeacher(boolean is) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean(TEACHER, is);
+        editor.commit();
+    }
+
+    public TeacherID getTeacherId() {
+        return TeacherID.getEnumByName(sharedPreferences.getString(TEACHER_ID, "Mgr. Cvrkal"));
+    }
+
+    public void setTeacherId(TeacherID id) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(TEACHER_ID, id.getName());
+        editor.commit();
     }
 }
