@@ -7,25 +7,24 @@ import java.util.List;
  * Created by matous on 30.4.14 for iSAS.
  */
 public enum ClassID {
-    PRIMAA("prA", 90),
-    SEKA("skA", 85),
-    TEA("teA", 83),
-    KRA("krA", 79),
-    KNA("knA", 74),
-    SXA("sxA", 69),
-    SXB("sxB", 70),
-    SPA("spA", 66),
-    SPB("spB", 67),
-    OKA("okA", 63),
-    OKB("okB", 64),
-    ONEA("1A", 91),
-    ONEB("1B", 92),
-    TWOA("2A", 86),
-    TWOB("2B", 87),
-    THREEA("3A", 81),
-    THREEB("3B", 82),
-    FOURA("4A", 77),
-    FOURB("4B", 78);
+    PRA("prA", 95),
+    SKA("skA", 90),
+    TEA("teA", 85),
+    KRA("krA", 83),
+    KNA("knA", 79),
+    SXA("sxA", 74),
+    SPA("spA", 69),
+    SPB("spB", 70),
+    OKA("okA", 66),
+    OKB("okB", 67),
+    ONEA("1A", 96),
+    ONEB("1B", 97),
+    TWOA("2A", 91),
+    TWOB("2B", 92),
+    THREEA("3A", 86),
+    THREEB("3B", 87),
+    FOURA("4A", 81),
+    FOURB("4B", 82);
 
     private String name;
     private int id;
