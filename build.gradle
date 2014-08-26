@@ -3,11 +3,11 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.9.+'
-        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.1'
+        classpath 'com.android.tools.build:gradle:0.12.2'
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.4'
     }
 }
-apply plugin: 'android'
+apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
 def AAVersion = '3.0.1'
 
@@ -24,14 +24,14 @@ apt {
 }
 
 android {
-    compileSdkVersion 19
-    buildToolsVersion "19.0.3"
+    compileSdkVersion 20
+    buildToolsVersion "19.1"
 
     defaultConfig {
         minSdkVersion 8
         targetSdkVersion 19
-        versionCode 13
-        versionName "2.0.7"
+        versionCode 14
+        versionName "2.1"
     }
 
     sourceSets {
@@ -68,7 +68,7 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     apt 'org.androidannotations:androidannotations:3.0.1'
     compile 'org.androidannotations:androidannotations-api:3.0.1'
-    compile 'com.readystatesoftware.systembartint:systembartint:+'
+    compile 'com.readystatesoftware.systembartint:systembartint:1.0.4'
     compile 'com.actionbarsherlock:actionbarsherlock:4.4.0@aar'
-    compile 'com.android.support:support-v4:19.0.+'
+    compile 'com.android.support:support-v4:20.0.0'
 }
