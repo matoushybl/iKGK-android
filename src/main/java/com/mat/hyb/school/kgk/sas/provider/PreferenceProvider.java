@@ -17,6 +17,7 @@ public class PreferenceProvider {
     private static final String OPEN = "open";
     private static final String TEACHER = "teacher";
     private static final String TEACHER_ID = "teacher_id";
+    private static final String LAST_CHANGE = "lastChange";
     private SharedPreferences sharedPreferences;
 
     public PreferenceProvider(Context context) {
@@ -64,6 +65,16 @@ public class PreferenceProvider {
     public void setTeacherId(TeacherID id) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(TEACHER_ID, id.getName());
+        editor.commit();
+    }
+
+    public long getLastChange() {
+        return sharedPreferences.getLong(LAST_CHANGE, System.currentTimeMillis());
+    }
+
+    public void setLastChange(long lastChange) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putLong(LAST_CHANGE, lastChange);
         editor.commit();
     }
 }

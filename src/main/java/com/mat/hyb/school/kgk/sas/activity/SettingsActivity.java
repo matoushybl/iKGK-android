@@ -58,6 +58,7 @@ public class SettingsActivity extends SherlockPreferenceActivity {
                         @Override
                         public void selected(ClassID id) {
                             preferenceProvider.setDefaultClass(id);
+                            preferenceProvider.setLastChange(System.currentTimeMillis());
                         }
                     });
                     dialog.show();

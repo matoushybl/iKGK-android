@@ -28,6 +28,8 @@ import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.res.StringRes;
 
+import java.util.Calendar;
+
 @OptionsMenu(R.menu.main)
 @EActivity(R.layout.activity_main)
 public class MainActivity extends SherlockActivity {
@@ -122,13 +124,14 @@ public class MainActivity extends SherlockActivity {
 
     @AfterViews
     void init() {
-        if (preferenceProvider.isFirstRun()) {
+        if (preferenceProvider.isFirstRun() || shouldUpdateClass()) {
             ClassChooserDialog dialog = new ClassChooserDialog(this);
             dialog.setSelectedListener(new ClassChooserDialog.ClassSelectedListener() {
                 @Override
                 public void selected(ClassID id) {
                     preferenceProvider.setDefaultClass(id);
                     preferenceProvider.setFirstRun();
+                    preferenceProvider.setLastChange(System.currentTimeMillis());
                 }
             });
             dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
@@ -144,6 +147,17 @@ public class MainActivity extends SherlockActivity {
         if (preferenceProvider.isTeacher()) {
             marksButton.setVisibility(View.GONE);
         }
+    }
+
+    private boolean shouldUpdateClass() {
+        Calendar lastUpdateCalendar = Calendar.getInstance();
+        lastUpdateCalendar.setTimeInMillis(preferenceProvider.getLastChange());
+
+        Calendar currentCalendar = Calendar.getInstance();
+
+        return (lastUpdateCalendar.get(Calendar.MONTH) < Calendar.SEPTEMBER
+                || lastUpdateCalendar.get(Calendar.YEAR) < currentCalendar.get(Calendar.YEAR))
+                && currentCalendar.get(Calendar.MONTH) >= Calendar.SEPTEMBER;
     }
 
     @OptionsItem
