@@ -6,7 +6,7 @@ import org.androidannotations.annotations.EBean;
 import java.util.Calendar;
 
 /**
- * Created by matous on 5.12.13.
+ * @author <a href="mailto:hyblmatous@gmail.com">Matous Hybl</a>
  */
 @EBean
 public class UrlProvider {

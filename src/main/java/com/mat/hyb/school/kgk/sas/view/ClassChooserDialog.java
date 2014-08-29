@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by matous on 1.5.14 for iSAS.
+ * @author <a href="mailto:hyblmatous@gmail.com">Matous Hybl</a>
  */
 public class ClassChooserDialog extends Dialog {
 

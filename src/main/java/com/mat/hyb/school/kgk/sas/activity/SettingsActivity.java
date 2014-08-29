@@ -21,7 +21,7 @@ import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.SystemService;
 
 /**
- * Created by matous on 3.5.14 for iSAS.
+ * @author <a href="mailto:hyblmatous@gmail.com">Matous Hybl</a>
  */
 @EActivity
 public class SettingsActivity extends SherlockPreferenceActivity {

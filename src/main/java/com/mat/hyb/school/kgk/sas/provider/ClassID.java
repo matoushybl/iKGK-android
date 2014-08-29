@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by matous on 30.4.14 for iSAS.
+ * @author <a href="mailto:hyblmatous@gmail.com">Matous Hybl</a>
  */
 public enum ClassID {
     PRA("prA", 95),

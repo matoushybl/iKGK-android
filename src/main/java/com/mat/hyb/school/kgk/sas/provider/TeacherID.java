@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by matous on 20.5.14 for iSAS.
+ * @author <a href="mailto:hyblmatous@gmail.com">Matous Hybl</a>
  */
 public enum TeacherID {
+    BAR("Bartoňová", 217),
     CVR("Mgr. Cvrkal", 143),
     CECH("Mgr. Čechová", 5),
     DOS("PhDr. Dostálová", 53),

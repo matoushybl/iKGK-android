@@ -1,5 +1,6 @@
 package com.mat.hyb.school.kgk.sas.view;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
 import android.util.AttributeSet;
@@ -11,7 +12,7 @@ import com.mat.hyb.school.kgk.sas.R;
 import org.androidannotations.annotations.EView;
 
 /**
- * Created by matous on 30.4.14 for iSAS.
+ * @author <a href="mailto:hyblmatous@gmail.com">Matous Hybl</a>
  */
 @EView
 public class MainButton extends Button {
@@ -25,6 +26,7 @@ public class MainButton extends Button {
         init();
     }
 
+    @SuppressLint("NewApi")
     private void init() {
         if (Build.VERSION.SDK_INT >= 14) {
             setAllCaps(true);

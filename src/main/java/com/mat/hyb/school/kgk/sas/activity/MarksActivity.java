@@ -1,5 +1,6 @@
 package com.mat.hyb.school.kgk.sas.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -23,7 +24,7 @@ import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
 
 /**
- * Created by matous on 3.5.14 for iSAS.
+ * @author <a href="mailto:hyblmatous@gmail.com">Matous Hybl</a>
  */
 @OptionsMenu(R.menu.browser)
 @EActivity(R.layout.activity_browser)
@@ -46,6 +47,7 @@ public class MarksActivity extends SherlockActivity {
         }
     }
 
+    @SuppressLint("NewApi")
     @AfterViews
     void initBrowser() {
         CookieManager.getInstance().setAcceptCookie(true);

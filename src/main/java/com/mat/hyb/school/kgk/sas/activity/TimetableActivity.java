@@ -13,7 +13,7 @@ import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.OptionsMenu;
 
 /**
- * Created by matous on 2.5.14 for iSAS.
+ * @author <a href="mailto:hyblmatous@gmail.com">Matous Hybl</a>
  */
 @OptionsMenu(R.menu.timetable)
 @EActivity(R.layout.activity_browser)

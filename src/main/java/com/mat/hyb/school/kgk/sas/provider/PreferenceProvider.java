@@ -7,7 +7,7 @@ import android.preference.PreferenceManager;
 import org.androidannotations.annotations.EBean;
 
 /**
- * Created by matous on 5.12.13.
+ * @author <a href="mailto:hyblmatous@gmail.com">Matous Hybl</a>
  */
 @EBean
 public class PreferenceProvider {

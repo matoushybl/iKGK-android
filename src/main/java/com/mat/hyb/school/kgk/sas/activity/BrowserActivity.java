@@ -1,11 +1,13 @@
 package com.mat.hyb.school.kgk.sas.activity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.WindowManager;
 import android.webkit.CookieManager;
 import android.webkit.HttpAuthHandler;
@@ -27,7 +29,7 @@ import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
 
 /**
- * Created by matous on 30.4.14 for iSAS.
+ * @author <a href="mailto:hyblmatous@gmail.com">Matous Hybl</a>
  */
 @OptionsMenu(R.menu.browser)
 @EActivity(R.layout.activity_browser)
@@ -51,6 +53,7 @@ public class BrowserActivity extends SherlockActivity {
         }
     }
 
+    @SuppressLint("NewApi")
     @AfterViews
     void initBrowser() {
         final Activity activity = this;
@@ -80,7 +83,7 @@ public class BrowserActivity extends SherlockActivity {
             }
 
             @Override
-            public void onReceivedHttpAuthRequest(WebView view, final HttpAuthHandler handler, String host, String realm) {
+            public void onReceivedHttpAuthRequest(WebView view, @NonNull final HttpAuthHandler handler, String host, String realm) {
                 String username = null;
                 String password = null;
 
