@@ -69,7 +69,7 @@ public class PreferenceProvider {
     }
 
     public long getLastChange() {
-        return sharedPreferences.getLong(LAST_CHANGE, System.currentTimeMillis());
+        return sharedPreferences.getLong(LAST_CHANGE, 0);
     }
 
     public void setLastChange(long lastChange) {

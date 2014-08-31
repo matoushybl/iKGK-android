@@ -150,6 +150,9 @@ public class MainActivity extends SherlockActivity {
     }
 
     private boolean shouldUpdateClass() {
+        if (preferenceProvider.getLastChange() == 0) {
+            return true;
+        }
         Calendar lastUpdateCalendar = Calendar.getInstance();
         lastUpdateCalendar.setTimeInMillis(preferenceProvider.getLastChange());
 
