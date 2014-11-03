@@ -1,61 +1,16 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
 buildscript {
     repositories {
         mavenCentral()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:0.14.0'
-        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.4'
-    }
-}
-apply plugin: 'com.android.application'
-apply plugin: 'android-apt'
-
-repositories {
-    mavenCentral()
-    mavenLocal()
-}
-
-apt {
-    arguments {
-        androidManifestFile variant.processResources.manifestFile
-        resourcePackageName 'com.mat.hyb.school.kgk.sas'
     }
 }
 
-android {
-    compileSdkVersion 21
-    buildToolsVersion "21.0.1"
-
-    defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 21
-        versionCode 16
-        versionName "2.1.2"
+allprojects {
+    repositories {
+        mavenCentral()
     }
-
-    signingConfigs {
-        release {
-            if (System.console() != null) {
-                storeFile file(System.console().readLine("\n\$ Enter keystore path: "))
-                storePassword System.console().readLine("\n\$ Enter keystore password: ")
-                keyAlias System.console().readLine("\n\$ Enter key Alias: ")
-                keyPassword System.console().readLine("\n\$ Enter key password: ")
-            }
-        }
-    }
-
-    buildTypes {
-        release {
-            runProguard false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
-            signingConfig signingConfigs.release
-        }
-    }
-}
-
-dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    apt 'org.androidannotations:androidannotations:3.1'
-    compile 'org.androidannotations:androidannotations-api:3.1'
-    compile "com.android.support:appcompat-v7:21.0.0"
 }
