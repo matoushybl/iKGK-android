@@ -1,6 +1,7 @@
 package com.mat.hyb.school.kgk.sas.activity;
 
-import com.actionbarsherlock.view.Menu;
+import android.view.Menu;
+
 import com.mat.hyb.school.kgk.sas.R;
 import com.mat.hyb.school.kgk.sas.provider.ClassID;
 import com.mat.hyb.school.kgk.sas.provider.PreferenceProvider;

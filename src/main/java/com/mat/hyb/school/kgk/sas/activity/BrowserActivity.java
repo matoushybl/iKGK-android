@@ -8,18 +8,16 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.view.WindowManager;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
 import android.webkit.CookieManager;
 import android.webkit.HttpAuthHandler;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.actionbarsherlock.app.SherlockActivity;
-import com.actionbarsherlock.view.Window;
 import com.mat.hyb.school.kgk.sas.R;
 import com.mat.hyb.school.kgk.sas.view.HttpAuthenticationDialog;
-import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
@@ -33,7 +31,7 @@ import org.androidannotations.annotations.ViewById;
  */
 @OptionsMenu(R.menu.browser)
 @EActivity(R.layout.activity_browser)
-public class BrowserActivity extends SherlockActivity {
+public class BrowserActivity extends ActionBarActivity {
 
     @ViewById
     protected
@@ -130,18 +128,6 @@ public class BrowserActivity extends SherlockActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
-        if (Build.VERSION.SDK_INT >= 19) {
-            android.view.Window window = getWindow();
-            window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION, WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-            window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            SystemBarTintManager systemBarTintManager = new SystemBarTintManager(this);
-            systemBarTintManager.setStatusBarTintColor(getResources().getColor(R.color.baseColor));
-            systemBarTintManager.setNavigationBarAlpha(0.0f);
-            systemBarTintManager.setNavigationBarTintColor(getResources().getColor(android.R.color.black));
-            systemBarTintManager.setStatusBarTintEnabled(true);
-            systemBarTintManager.setNavigationBarTintEnabled(true);
-        }
         setSupportProgressBarVisibility(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setIcon(R.drawable.ic_ab); // needs a transparent icon
@@ -173,7 +159,7 @@ public class BrowserActivity extends SherlockActivity {
     }
 
     @Override
-    public boolean onPrepareOptionsMenu(com.actionbarsherlock.view.Menu menu) {
+    public boolean onPrepareOptionsMenu(Menu menu) {
         if (webView != null) {
             menu.findItem(R.id.forward).setEnabled(webView.canGoForward());
             menu.findItem(R.id.backward).setEnabled(webView.canGoBack());

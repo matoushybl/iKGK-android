@@ -3,21 +3,17 @@ package com.mat.hyb.school.kgk.sas.activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.Browser;
+import android.support.v7.app.ActionBarActivity;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 
-import com.actionbarsherlock.app.SherlockActivity;
 import com.mat.hyb.school.kgk.sas.R;
 import com.mat.hyb.school.kgk.sas.provider.ClassID;
 import com.mat.hyb.school.kgk.sas.provider.PreferenceProvider;
 import com.mat.hyb.school.kgk.sas.provider.UrlProvider;
 import com.mat.hyb.school.kgk.sas.view.ClassChooserDialog;
-import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
@@ -32,7 +28,7 @@ import java.util.Calendar;
 
 @OptionsMenu(R.menu.main)
 @EActivity(R.layout.activity_main)
-public class MainActivity extends SherlockActivity {
+public class MainActivity extends ActionBarActivity {
 
     @Bean
     UrlProvider urlProvider;
@@ -179,17 +175,6 @@ public class MainActivity extends SherlockActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (Build.VERSION.SDK_INT >= 19) {
-            Window window = getWindow();
-            window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION, WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-            window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            SystemBarTintManager systemBarTintManager = new SystemBarTintManager(this);
-            systemBarTintManager.setStatusBarTintColor(getResources().getColor(R.color.baseColor));
-            systemBarTintManager.setNavigationBarAlpha(0.0f);
-            systemBarTintManager.setNavigationBarTintColor(getResources().getColor(android.R.color.black));
-            systemBarTintManager.setStatusBarTintEnabled(true);
-            systemBarTintManager.setNavigationBarTintEnabled(true);
-        }
         getSupportActionBar().setIcon(R.drawable.ic_ab);
     }
 

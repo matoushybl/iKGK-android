@@ -1,19 +1,11 @@
 package com.mat.hyb.school.kgk.sas.activity;
 
-import android.app.AlertDialog;
 import android.app.NotificationManager;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
-import android.preference.Preference;
+import android.support.v7.app.ActionBarActivity;
 
-import com.actionbarsherlock.app.SherlockPreferenceActivity;
 import com.mat.hyb.school.kgk.sas.R;
-import com.mat.hyb.school.kgk.sas.provider.ClassID;
 import com.mat.hyb.school.kgk.sas.provider.PreferenceProvider;
-import com.mat.hyb.school.kgk.sas.view.ClassChooserDialog;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
@@ -24,7 +16,7 @@ import org.androidannotations.annotations.SystemService;
  * @author <a href="mailto:hyblmatous@gmail.com">Matous Hybl</a>
  */
 @EActivity
-public class SettingsActivity extends SherlockPreferenceActivity {
+public class SettingsActivity extends ActionBarActivity {
 
     private static final String AUTHOR_KEY = "author";
     private static final String VERSION_KEY = "app_version";
@@ -45,6 +37,7 @@ public class SettingsActivity extends SherlockPreferenceActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setIcon(R.drawable.ic_ab);
         getSupportActionBar().setTitle(R.string.action_settings);
+        /*
         addPreferencesFromResource(R.xml.settings);
 
         final SettingsActivity activity = this;
@@ -127,7 +120,7 @@ public class SettingsActivity extends SherlockPreferenceActivity {
                     return false;
                 }
             });
-        }
+        }*/
     }
 
     @OptionsItem(android.R.id.home)

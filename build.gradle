@@ -3,13 +3,12 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.12.2'
+        classpath 'com.android.tools.build:gradle:0.14.0'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.4'
     }
 }
 apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
-def AAVersion = '3.0.1'
 
 repositories {
     mavenCentral()
@@ -24,24 +23,14 @@ apt {
 }
 
 android {
-    compileSdkVersion 20
-    buildToolsVersion "19.1"
+    compileSdkVersion 21
+    buildToolsVersion "21.0.1"
 
     defaultConfig {
-        minSdkVersion 8
-        targetSdkVersion 19
+        minSdkVersion 14
+        targetSdkVersion 21
         versionCode 16
         versionName "2.1.2"
-    }
-
-    sourceSets {
-        main {
-            manifest.srcFile 'src/main/AndroidManifest.xml'
-            java.srcDirs = ['src/main/java']
-            resources.srcDirs = ['src/main/res']
-            res.srcDirs = ['src/main/res']
-            assets.srcDirs = ['src/main/assets']
-        }
     }
 
     signingConfigs {
@@ -66,9 +55,7 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    apt 'org.androidannotations:androidannotations:3.0.1'
-    compile 'org.androidannotations:androidannotations-api:3.0.1'
-    compile 'com.readystatesoftware.systembartint:systembartint:1.0.4'
-    compile 'com.actionbarsherlock:actionbarsherlock:4.4.0@aar'
-    compile 'com.android.support:support-v4:20.0.0'
+    apt 'org.androidannotations:androidannotations:3.1'
+    compile 'org.androidannotations:androidannotations-api:3.1'
+    compile "com.android.support:appcompat-v7:21.0.0"
 }

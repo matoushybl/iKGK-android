@@ -1,10 +1,9 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.Sherlock.Light.DarkActionBar">
-        <item name="android:actionBarStyle">@style/ActionBar.Solid.Orangesherlock</item>
-        <item name="actionBarStyle">@style/ActionBar.Solid.Orangesherlock</item>
-
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">#259b24</item>
+        <item name="colorPrimaryDark">#0d5302</item>
     </style>
 
 </resources>
