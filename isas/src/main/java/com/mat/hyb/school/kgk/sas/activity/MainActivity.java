@@ -178,4 +178,15 @@ public class MainActivity extends ActionBarActivity {
         getSupportActionBar().setIcon(R.drawable.ic_ab);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (marksButton != null) {
+            if (preferenceProvider.isTeacher()) {
+                marksButton.setVisibility(View.GONE);
+            } else {
+                marksButton.setVisibility(View.VISIBLE);
+            }
+        }
+    }
 }

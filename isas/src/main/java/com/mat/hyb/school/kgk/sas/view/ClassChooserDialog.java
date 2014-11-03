@@ -1,6 +1,5 @@
 package com.mat.hyb.school.kgk.sas.view;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -16,7 +15,6 @@ import com.mat.hyb.school.kgk.sas.provider.PreferenceProvider;
 import com.mat.hyb.school.kgk.sas.provider.PreferenceProvider_;
 import com.mat.hyb.school.kgk.sas.provider.TeacherID;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,7 +22,6 @@ import java.util.List;
  */
 public class ClassChooserDialog extends Dialog {
 
-    private List<String> classes = new ArrayList<String>();
     private ClassSelectedListener selectedListener = new ClassSelectedListener() {
         @Override
         public void selected(ClassID id) {
@@ -32,23 +29,13 @@ public class ClassChooserDialog extends Dialog {
         }
     };
 
-    private Activity activity;
-    private PreferenceProvider provider;
-
-    public ClassChooserDialog(Context context) {
+    public ClassChooserDialog(final Context context) {
         super(context);
-        if (context instanceof Activity) {
-            activity = (Activity) context;
-        }
-        provider = PreferenceProvider_.getInstance_(context);
-        init();
-    }
-
-    void init() {
+        final PreferenceProvider provider = PreferenceProvider_.getInstance_(context);
         setContentView(R.layout.dialog_classchooser);
         setCancelable(false);
         ListView listView = (ListView) findViewById(R.id.classes);
-        classes = ClassID.getNames();
+        final List<String> classes = ClassID.getNames();
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
                 android.R.layout.simple_list_item_1, classes);
         listView.setAdapter(adapter);
@@ -56,25 +43,25 @@ public class ClassChooserDialog extends Dialog {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 selectedListener.selected(ClassID.getEnumByName(classes.get(i)));
+                provider.setTeacher(false);
                 dismiss();
             }
         });
-        final ClassChooserDialog classDialog = this;
         Button teacher = (Button) findViewById(R.id.teacherButton);
         teacher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final TeacherChooserDialog dialog = new TeacherChooserDialog(activity);
+                final TeacherChooserDialog dialog = new TeacherChooserDialog(context);
                 dialog.setOnDismissListener(new OnDismissListener() {
                     @Override
                     public void onDismiss(DialogInterface dialogInterface) {
-                        classDialog.dismiss();
+                        ClassChooserDialog.this.dismiss();
                     }
                 });
                 dialog.setSelectedListener(new TeacherChooserDialog.TeacherSelectedListener() {
                     @Override
                     public void selected(TeacherID id) {
-                        provider.setTeacher();
+                        provider.setTeacher(true);
                         provider.setTeacherId(id);
                         provider.setFirstRun();
                         dialog.dismiss();

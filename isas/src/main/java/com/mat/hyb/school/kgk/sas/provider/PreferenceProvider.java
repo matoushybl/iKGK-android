@@ -31,13 +31,13 @@ public class PreferenceProvider {
     public void setDefaultClass(ClassID id) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(CLASS, id.getName());
-        editor.commit();
+        editor.apply();
     }
 
     public void setFirstRun() {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean(FIRST_RUN, false);
-        editor.commit();
+        editor.apply();
     }
 
     public boolean isOpeningInBrowserEnabled() {
@@ -52,10 +52,10 @@ public class PreferenceProvider {
         return sharedPreferences.getBoolean(TEACHER, false);
     }
 
-    public void setTeacher() {
+    public void setTeacher(boolean teacher) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean(TEACHER, true);
-        editor.commit();
+        editor.putBoolean(TEACHER, teacher);
+        editor.apply();
     }
 
     public TeacherID getTeacherId() {
@@ -65,7 +65,7 @@ public class PreferenceProvider {
     public void setTeacherId(TeacherID id) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(TEACHER_ID, id.getName());
-        editor.commit();
+        editor.apply();
     }
 
     public long getLastChange() {
@@ -75,6 +75,6 @@ public class PreferenceProvider {
     public void setLastChange(long lastChange) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putLong(LAST_CHANGE, lastChange);
-        editor.commit();
+        editor.apply();
     }
 }
