@@ -23,7 +23,6 @@ import org.androidannotations.annotations.EFragment;
 @EFragment
 public class SettingsFragment extends PreferenceFragment {
 
-    private static final String AUTHOR_KEY = "author";
     private static final String VERSION_KEY = "app_version";
     private static final String OPEN_KEY = "open";
     private static final String CLASS_KEY = "class";
@@ -65,19 +64,6 @@ public class SettingsFragment extends PreferenceFragment {
             } catch (PackageManager.NameNotFoundException e) {
                 e.printStackTrace();
             }
-        }
-
-        Preference author = findPreference(AUTHOR_KEY);
-        if (author != null) {
-            author.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-                @Override
-                public boolean onPreferenceClick(Preference preference) {
-                    Intent intent = new Intent(Intent.ACTION_VIEW);
-                    intent.setData(Uri.parse("http://www.google.com/+MatoušHýbl"));
-                    startActivity(intent);
-                    return false;
-                }
-            });
         }
 
         Preference source = findPreference(SOURCE_KEY);

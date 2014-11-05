@@ -28,11 +28,11 @@ public class UrlProvider {
     @Bean
     PreferenceProvider preferencesProvider;
 
-    public String getMoodleUrl() {
+    public static String getMoodleUrl() {
         return MOODLE_URL;
     }
 
-    public String getCanteenUrl() {
+    public static String getCanteenUrl() {
         return CANTEEN_URL;
     }
 

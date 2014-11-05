@@ -15,6 +15,7 @@
     <PreferenceCategory android:title="@string/about_group_title">
         <Preference
             android:key="author"
+            android:summary="@string/author_summary"
             android:title="@string/author_preference_title"/>
 
         <Preference

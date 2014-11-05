@@ -1,19 +1,16 @@
 package com.mat.hyb.school.kgk.sas.activity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Bundle;
 import android.provider.Browser;
 import android.support.v7.app.ActionBarActivity;
-import android.view.View;
-import android.widget.Button;
 
 import com.mat.hyb.school.kgk.sas.R;
 import com.mat.hyb.school.kgk.sas.provider.ClassID;
 import com.mat.hyb.school.kgk.sas.provider.PreferenceProvider;
 import com.mat.hyb.school.kgk.sas.provider.UrlProvider;
 import com.mat.hyb.school.kgk.sas.view.ClassChooserDialog;
+import com.mat.hyb.school.kgk.sas.view.MainTile;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
@@ -31,34 +28,34 @@ import java.util.Calendar;
 public class MainActivity extends ActionBarActivity {
 
     @Bean
-    UrlProvider urlProvider;
+    protected UrlProvider urlProvider;
 
     @Bean
-    PreferenceProvider preferenceProvider;
+    protected PreferenceProvider preferenceProvider;
 
     @StringRes
-    String marks;
+    protected String marks;
 
     @StringRes
-    String canteen;
+    protected String canteen;
 
     @StringRes
-    String timetable;
+    protected String timetable;
 
     @StringRes
-    String moodle;
+    protected String moodle;
 
     @StringRes
-    String website;
+    protected String website;
 
     @StringRes
-    String substitution;
+    protected String substitution;
 
     @ViewById(R.id.marks)
-    Button marksButton;
+    protected MainTile marksButton;
 
     @Click
-    void marksClicked() {
+    protected void marksClicked() {
         if (preferenceProvider.isOpeningInBrowserEnabled()) {
             openInBrowser(urlProvider.getMarksUrl());
         } else {
@@ -68,7 +65,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     @Click
-    void timetableClicked() {
+    protected void timetableClicked() {
         if (preferenceProvider.isOpeningInBrowserEnabled()) {
             openInBrowser(urlProvider.getOurTimetableUrl());
         } else {
@@ -78,37 +75,22 @@ public class MainActivity extends ActionBarActivity {
     }
 
     @Click
-    void canteenClicked() {
-        if (preferenceProvider.isOpeningInBrowserEnabled()) {
-            openInBrowser(urlProvider.getCanteenUrl());
-        } else {
-            BrowserActivity_.intent(getApplicationContext()).title(canteen)
-                    .flags(Intent.FLAG_ACTIVITY_NEW_TASK).url(urlProvider.getCanteenUrl()).start();
-        }
+    protected void canteenClicked() {
+        openInBrowserActivity(UrlProvider.getCanteenUrl(), canteen);
     }
 
     @Click
-    void moodleClicked() {
-        if (preferenceProvider.isOpeningInBrowserEnabled()) {
-            openInBrowser(urlProvider.getMoodleUrl());
-        } else {
-            BrowserActivity_.intent(getApplicationContext()).title(moodle)
-                    .flags(Intent.FLAG_ACTIVITY_NEW_TASK).url(urlProvider.getMoodleUrl()).start();
-        }
+    protected void moodleClicked() {
+        openInBrowserActivity(UrlProvider.getMoodleUrl(), moodle);
     }
 
     @Click
-    void websiteClicked() {
-        if (preferenceProvider.isOpeningInBrowserEnabled()) {
-            openInBrowser(UrlProvider.WEBSITE);
-        } else {
-            BrowserActivity_.intent(getApplicationContext()).title(website)
-                    .flags(Intent.FLAG_ACTIVITY_NEW_TASK).url(UrlProvider.WEBSITE).start();
-        }
+    protected void websiteClicked() {
+        openInBrowserActivity(UrlProvider.WEBSITE, website);
     }
 
     @Click
-    void substitutionClicked() {
+    protected void substitutionClicked() {
         if (preferenceProvider.isOpeningInBrowserEnabled()) {
             openInBrowser(urlProvider.getSuggestedDateUrl());
         } else {
@@ -119,7 +101,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     @AfterViews
-    void init() {
+    protected void init() {
         if (preferenceProvider.isFirstRun() || shouldUpdateClass()) {
             ClassChooserDialog dialog = new ClassChooserDialog(this);
             dialog.setSelectedListener(new ClassChooserDialog.ClassSelectedListener() {
@@ -130,19 +112,9 @@ public class MainActivity extends ActionBarActivity {
                     preferenceProvider.setLastChange(System.currentTimeMillis());
                 }
             });
-            dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                @Override
-                public void onDismiss(DialogInterface dialogInterface) {
-                    if (preferenceProvider.isTeacher()) {
-                        marksButton.setVisibility(View.GONE);
-                    }
-                }
-            });
             dialog.show();
         }
-        if (preferenceProvider.isTeacher()) {
-            marksButton.setVisibility(View.GONE);
-        }
+        getSupportActionBar().setElevation(0);
     }
 
     private boolean shouldUpdateClass() {
@@ -160,33 +132,24 @@ public class MainActivity extends ActionBarActivity {
     }
 
     @OptionsItem
-    void settings() {
+    protected void settings() {
         SettingsActivity_.intent(getApplicationContext())
                 .flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
     }
 
-    public void openInBrowser(String url) {
+    private void openInBrowserActivity(String url, String title) {
+        if (preferenceProvider.isOpeningInBrowserEnabled()) {
+            openInBrowser(url);
+        } else {
+            BrowserActivity_.intent(getApplicationContext()).title(title)
+                    .flags(Intent.FLAG_ACTIVITY_NEW_TASK).url(url).start();
+        }
+    }
+
+    private void openInBrowser(String url) {
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.putExtra(Browser.EXTRA_APPLICATION_ID, getPackageName());
         intent.setData(Uri.parse(url));
         startActivity(intent);
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        getSupportActionBar().setIcon(R.drawable.ic_ab);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (marksButton != null) {
-            if (preferenceProvider.isTeacher()) {
-                marksButton.setVisibility(View.GONE);
-            } else {
-                marksButton.setVisibility(View.VISIBLE);
-            }
-        }
     }
 }

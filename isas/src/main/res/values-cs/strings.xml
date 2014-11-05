@@ -26,7 +26,7 @@
     <string name="general_group_title">Obecné</string>
     <string name="open_preference_summary">Povolte pro otevírání stránek ve Vašem prohlížeči</string>
     <string name="about_group_title">O aplikaci</string>
-    <string name="author_preference_title">Autor</string>
+    <string name="author_preference_title">Autoři</string>
     <string name="version_preference_title">Verze aplikace</string>
     <string name="source_label">Zdrojový kód</string>
     <string name="libs_label">Použité knihovny</string>
@@ -34,4 +34,5 @@
     <string name="change_class_summary">Klepněte pro změnu výchozí třídy</string>
     <string name="teacher_button_text">Učitelé</string>
     <string name="teacher_dialog_title">Nastavení učitele…</string>
+    <string name="author_summary">Jakub Šlancar (design), Matouš Hýbl (kód)</string>
 </resources>

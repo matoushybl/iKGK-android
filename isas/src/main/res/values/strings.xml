@@ -26,7 +26,7 @@
     <string name="general_group_title">General</string>
     <string name="open_preference_summary">Enable to open pages directly in your browser</string>
     <string name="about_group_title">About app</string>
-    <string name="author_preference_title">Author</string>
+    <string name="author_preference_title">Authors</string>
     <string name="version_preference_title">App version</string>
     <string name="source_label">Source code</string>
     <string name="libs_label">Used libraries</string>
@@ -34,5 +34,6 @@
     <string name="change_class_summary">Click to choose different class as default</string>
     <string name="teacher_button_text">Teachers</string>
     <string name="teacher_dialog_title">Set teacher…</string>
+    <string name="author_summary">Jakub Šlancar (design), Matouš Hýbl (code)</string>
 
 </resources>

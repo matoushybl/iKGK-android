@@ -17,7 +17,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:paddingRight="8dp"
+            android:paddingRight="16dp"
             app:text="@string/marks"
             app:tile_icon="@drawable/ic_marks"/>
 
@@ -26,36 +26,17 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:paddingLeft="8dp"
+            android:paddingRight="16dp"
             app:text="@string/substitution"
             app:tile_icon="@drawable/ic_subst"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:paddingTop="16dp">
 
         <com.mat.hyb.school.kgk.sas.view.MainTile_
             android:id="@+id/timetable"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:paddingRight="8dp"
             app:text="@string/timetable"
             app:tile_icon="@drawable/ic_timetable"/>
-
-        <com.mat.hyb.school.kgk.sas.view.MainTile_
-            android:id="@+id/moodle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingLeft="8dp"
-            app:text="@string/moodle"
-            app:tile_icon="@drawable/ic_moodle"/>
 
     </LinearLayout>
 
@@ -67,11 +48,20 @@
         android:paddingTop="16dp">
 
         <com.mat.hyb.school.kgk.sas.view.MainTile_
+            android:id="@+id/moodle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingRight="16dp"
+            app:text="@string/moodle"
+            app:tile_icon="@drawable/ic_moodle"/>
+
+        <com.mat.hyb.school.kgk.sas.view.MainTile_
             android:id="@+id/canteen"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:paddingRight="8dp"
+            android:paddingRight="16dp"
             app:text="@string/canteen"
             app:tile_icon="@drawable/ic_canteen"/>
 
@@ -80,10 +70,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:paddingLeft="8dp"
             app:text="@string/website"
             app:tile_icon="@drawable/ic_school"/>
-
     </LinearLayout>
 
 
