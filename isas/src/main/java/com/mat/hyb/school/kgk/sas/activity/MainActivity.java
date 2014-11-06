@@ -56,7 +56,7 @@ public class MainActivity extends ActionBarActivity {
 
     @Click
     protected void marksClicked() {
-        openInBrowserActivity(urlProvider.getMarksUrl(), marks);
+        openInBrowserActivity(UrlProvider.MARKS, marks);
     }
 
     @Click
@@ -64,19 +64,21 @@ public class MainActivity extends ActionBarActivity {
         if (preferenceProvider.isOpeningInBrowserEnabled()) {
             openInBrowser(urlProvider.getOurTimetableUrl());
         } else {
-            TimetableActivity_.intent(getApplicationContext()).flags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                    .url(urlProvider.getOurTimetableUrl()).title(timetable).start();
+            TimetableActivity_.intent(this)
+                    .url(urlProvider.getOurTimetableUrl())
+                    .title(timetable)
+                    .start();
         }
     }
 
     @Click
     protected void canteenClicked() {
-        openInBrowserActivity(UrlProvider.getCanteenUrl(), canteen);
+        openInBrowserActivity(UrlProvider.CANTEEN, canteen);
     }
 
     @Click
     protected void moodleClicked() {
-        openInBrowserActivity(UrlProvider.getMoodleUrl(), moodle);
+        openInBrowserActivity(UrlProvider.MOODLE, moodle);
     }
 
     @Click
@@ -89,14 +91,16 @@ public class MainActivity extends ActionBarActivity {
         if (preferenceProvider.isOpeningInBrowserEnabled()) {
             openInBrowser(urlProvider.getSuggestedDateUrl());
         } else {
-            SubstitutionActivity_.intent(getApplicationContext()).title(substitution)
-                    .flags(Intent.FLAG_ACTIVITY_NEW_TASK).url(urlProvider.getSuggestedDateUrl())
+            SubstitutionActivity_.intent(this)
+                    .title(substitution)
+                    .url(urlProvider.getSuggestedDateUrl())
                     .start();
         }
     }
 
     @AfterViews
     protected void init() {
+        getSupportActionBar().setElevation(0);
         if (preferenceProvider.isFirstRun() || shouldUpdateClass()) {
             ClassChooserDialog dialog = new ClassChooserDialog(this);
             dialog.setSelectedListener(new ClassChooserDialog.ClassSelectedListener() {
@@ -109,7 +113,6 @@ public class MainActivity extends ActionBarActivity {
             });
             dialog.show();
         }
-        getSupportActionBar().setElevation(0);
     }
 
     private boolean shouldUpdateClass() {
@@ -128,16 +131,14 @@ public class MainActivity extends ActionBarActivity {
 
     @OptionsItem
     protected void settings() {
-        SettingsActivity_.intent(getApplicationContext())
-                .flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
+        SettingsActivity_.intent(this).start();
     }
 
     private void openInBrowserActivity(String url, String title) {
         if (preferenceProvider.isOpeningInBrowserEnabled()) {
             openInBrowser(url);
         } else {
-            BrowserActivity_.intent(getApplicationContext()).title(title)
-                    .flags(Intent.FLAG_ACTIVITY_NEW_TASK).url(url).start();
+            BrowserActivity_.intent(this).title(title).url(url).start();
         }
     }
 

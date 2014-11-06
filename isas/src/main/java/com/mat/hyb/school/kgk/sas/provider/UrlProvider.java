@@ -12,12 +12,12 @@ import java.util.Calendar;
 public class UrlProvider {
 
     public static final String WEBSITE = "http://www.gymkyjov.cz/";
-    private static final String MOODLE_URL = "http://www.gymkyjov.cz/moodle";
-    private static final String CANTEEN_URL = "http://www.gymkyjov.cz:8082";
+    public static final String MOODLE = "http://www.gymkyjov.cz/moodle";
+    public static final String CANTEEN = "http://www.gymkyjov.cz:8082";
+    public static final String MARKS = "http://www.gymkyjov.cz/isas/prubezna-klasifikace.php";
     private static final String SUBSTITUTION_URL =
             "http://www.gymkyjov.cz/isas/suplovani.php?zobraz=tridy-1&suplovani=";
     private static final String DATE = "&rezim=den&datum=";
-    private static final String MARKS = "http://www.gymkyjov.cz/isas/prubezna-klasifikace.php";
     private static final String TIMETABLE =
             "http://www.gymkyjov.cz/isas/rozvrh-hodin.php?zobraz=tridy-1&rozvrh=";
     private static final String TEACHER_TIMETABLE
@@ -27,14 +27,6 @@ public class UrlProvider {
             = "http://www.gymkyjov.cz/isas/suplovani.php?zobraz=suplujici&suplovani=";
     @Bean
     PreferenceProvider preferencesProvider;
-
-    public static String getMoodleUrl() {
-        return MOODLE_URL;
-    }
-
-    public static String getCanteenUrl() {
-        return CANTEEN_URL;
-    }
 
     public String getSubstitutionTodayUrl() {
         String url = SUBSTITUTION_URL;
@@ -50,10 +42,6 @@ public class UrlProvider {
             url = TEACHER_SUBSTITUTION_URL;
         }
         return url + getSavedId() + DATE + getTomorrowDate();
-    }
-
-    public String getMarksUrl() {
-        return MARKS;
     }
 
     private String getTomorrowDate() {
