@@ -16,16 +16,16 @@ import org.androidannotations.annotations.OptionsMenu;
 public class SubstitutionActivity extends BrowserActivity {
 
     @Bean
-    UrlProvider provider;
+    protected UrlProvider provider;
 
     @OptionsItem
-    void today() {
+    protected void today() {
         setSupportProgressBarIndeterminateVisibility(true);
         webView.loadUrl(provider.getSubstitutionTodayUrl());
     }
 
     @OptionsItem
-    void nextDay() {
+    protected void nextDay() {
         setSupportProgressBarIndeterminateVisibility(true);
         webView.loadUrl(provider.getSubstitutionTomorrowUrl());
     }

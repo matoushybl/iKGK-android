@@ -1,15 +1,13 @@
 package com.mat.hyb.school.kgk.sas.activity;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.webkit.CookieManager;
 import android.webkit.HttpAuthHandler;
 import android.webkit.WebChromeClient;
@@ -24,6 +22,7 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.OptionsMenu;
+import org.androidannotations.annotations.OptionsMenuItem;
 import org.androidannotations.annotations.ViewById;
 
 /**
@@ -34,35 +33,33 @@ import org.androidannotations.annotations.ViewById;
 public class BrowserActivity extends ActionBarActivity {
 
     @ViewById
-    protected
-    WebView webView;
+    protected WebView webView;
 
-    @Extra("url")
-    String url;
+    @Extra
+    protected String url;
 
-    @Extra("title")
-    String title;
+    @Extra
+    protected String title;
+
+    @OptionsMenuItem
+    protected MenuItem refresh;
 
     @AfterViews
-    void init() {
-        setSupportProgressBarIndeterminateVisibility(true);
+    protected void init() {
+        getSupportActionBar().setElevation(0);
+        setSupportProgressBarVisibility(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         if (title != null) {
             setTitle(title);
         }
-    }
-
-    @SuppressLint("NewApi")
-    @AfterViews
-    void initBrowser() {
-        final Activity activity = this;
         CookieManager.getInstance().setAcceptCookie(true);
         webView.setWebChromeClient(new WebChromeClient() {
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
                 if (newProgress == 100) {
-                    setSupportProgressBarIndeterminateVisibility(false);
+                    setSupportProgressBarVisibility(false);
                 } else {
-                    setSupportProgressBarIndeterminateVisibility(true);
+                    setSupportProgressBarVisibility(true);
                 }
             }
         });
@@ -71,7 +68,7 @@ public class BrowserActivity extends ActionBarActivity {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
-                setSupportProgressBarIndeterminateVisibility(true);
+                setSupportProgressBarVisibility(true);
             }
 
             @Override
@@ -97,7 +94,7 @@ public class BrowserActivity extends ActionBarActivity {
                     handler.proceed(username, password);
                 } else {
                     HttpAuthenticationDialog dialog
-                            = new HttpAuthenticationDialog(activity, host, realm);
+                            = new HttpAuthenticationDialog(BrowserActivity.this, host, realm);
                     dialog.setOkListener(new HttpAuthenticationDialog.OkListener() {
                         @Override
                         public void onOk(String host, String realm, String username, String password) {
@@ -125,34 +122,26 @@ public class BrowserActivity extends ActionBarActivity {
         webView.loadUrl(url);
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setSupportProgressBarVisibility(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setIcon(R.drawable.ic_ab); // needs a transparent icon
-    }
-
     @OptionsItem(android.R.id.home)
-    void home() {
+    protected void home() {
         this.finish();
     }
 
     @OptionsItem
-    void refresh() {
-        setSupportProgressBarIndeterminateVisibility(true);
+    protected void refresh() {
+        setSupportProgressBarVisibility(true);
         webView.reload();
     }
 
     @OptionsItem
-    void backward() {
+    protected void backward() {
         if (webView.canGoBack()) {
             webView.goBack();
         }
     }
 
     @OptionsItem
-    void forward() {
+    protected void forward() {
         if (webView.canGoForward()) {
             webView.goForward();
         }
@@ -167,8 +156,21 @@ public class BrowserActivity extends ActionBarActivity {
         return super.onPrepareOptionsMenu(menu);
     }
 
+    @Override
+    public void setSupportProgressBarVisibility(boolean visible) {
+        if (refresh != null) {
+            if (visible) {
+                refresh.setActionView(R.layout.refresh_layout);
+                refresh.expandActionView();
+            } else {
+                refresh.collapseActionView();
+                refresh.setActionView(null);
+            }
+        }
+    }
+
     @OptionsItem
-    void open() {
+    protected void open() {
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse(webView.getUrl()));
         startActivity(intent);

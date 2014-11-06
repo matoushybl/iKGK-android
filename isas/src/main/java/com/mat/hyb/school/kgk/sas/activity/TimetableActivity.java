@@ -21,19 +21,19 @@ import org.androidannotations.annotations.OptionsMenu;
 public class TimetableActivity extends BrowserActivity {
 
     @Bean
-    UrlProvider provider;
+    protected UrlProvider provider;
 
     @Bean
-    PreferenceProvider preferenceProvider;
+    protected PreferenceProvider preferenceProvider;
 
     @OptionsItem
-    void myClass() {
+    protected void myClass() {
         setSupportProgressBarIndeterminateVisibility(true);
         webView.loadUrl(provider.getOurTimetableUrl());
     }
 
     @OptionsItem
-    void otherClass() {
+    protected void otherClass() {
         setSupportProgressBarIndeterminateVisibility(true);
         ClassChooserDialog dialog = new ClassChooserDialog(this);
         dialog.setSelectedListener(new ClassChooserDialog.ClassSelectedListener() {

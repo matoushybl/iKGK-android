@@ -56,12 +56,7 @@ public class MainActivity extends ActionBarActivity {
 
     @Click
     protected void marksClicked() {
-        if (preferenceProvider.isOpeningInBrowserEnabled()) {
-            openInBrowser(urlProvider.getMarksUrl());
-        } else {
-            MarksActivity_.intent(getApplicationContext()).title(marks)
-                    .flags(Intent.FLAG_ACTIVITY_NEW_TASK).url(urlProvider.getMarksUrl()).start();
-        }
+        openInBrowserActivity(urlProvider.getMarksUrl(), marks);
     }
 
     @Click

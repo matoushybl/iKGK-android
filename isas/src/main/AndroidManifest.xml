@@ -23,7 +23,6 @@
         <activity android:name=".activity.BrowserActivity_"/>
         <activity android:name=".activity.TimetableActivity_"/>
         <activity android:name=".activity.SubstitutionActivity_"/>
-        <activity android:name=".activity.MarksActivity_"/>
         <activity android:name=".activity.SettingsActivity_"/>
 
     </application>
