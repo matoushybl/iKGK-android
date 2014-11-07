@@ -11,11 +11,10 @@ import android.preference.PreferenceFragment;
 
 import com.mat.hyb.school.kgk.sas.R;
 import com.mat.hyb.school.kgk.sas.provider.ClassID;
-import com.mat.hyb.school.kgk.sas.provider.PreferenceProvider;
 import com.mat.hyb.school.kgk.sas.view.ClassChooserDialog;
 
-import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EFragment;
+import org.androidannotations.annotations.sharedpreferences.Pref;
 
 /**
  * @author <a href="mailto:hyblmatous@gmail.com">Matous Hybl</a>
@@ -24,17 +23,18 @@ import org.androidannotations.annotations.EFragment;
 public class SettingsFragment extends PreferenceFragment {
 
     private static final String VERSION_KEY = "app_version";
-    private static final String OPEN_KEY = "open";
     private static final String CLASS_KEY = "class";
     private static final String SOURCE_KEY = "source";
     private static final String LIBS_KEY = "libs";
 
-    @Bean
-    PreferenceProvider preferenceProvider;
+    @Pref
+    protected ISASPrefs_ prefs;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getPreferenceManager().setSharedPreferencesName("ISASPrefs");
+
         addPreferencesFromResource(R.xml.settings);
 
         Preference changeClass = findPreference(CLASS_KEY);
@@ -46,8 +46,7 @@ public class SettingsFragment extends PreferenceFragment {
                     dialog.setSelectedListener(new ClassChooserDialog.ClassSelectedListener() {
                         @Override
                         public void selected(ClassID id) {
-                            preferenceProvider.setDefaultClass(id);
-                            preferenceProvider.setLastChange(System.currentTimeMillis());
+                            prefs.id().put(id.getId());
                         }
                     });
                     dialog.show();

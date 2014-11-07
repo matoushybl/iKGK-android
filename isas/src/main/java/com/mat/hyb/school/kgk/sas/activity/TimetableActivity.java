@@ -4,14 +4,15 @@ import android.view.Menu;
 
 import com.mat.hyb.school.kgk.sas.R;
 import com.mat.hyb.school.kgk.sas.provider.ClassID;
-import com.mat.hyb.school.kgk.sas.provider.PreferenceProvider;
 import com.mat.hyb.school.kgk.sas.provider.UrlProvider;
+import com.mat.hyb.school.kgk.sas.settings.ISASPrefs_;
 import com.mat.hyb.school.kgk.sas.view.ClassChooserDialog;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.OptionsMenu;
+import org.androidannotations.annotations.sharedpreferences.Pref;
 
 /**
  * @author <a href="mailto:hyblmatous@gmail.com">Matous Hybl</a>
@@ -23,8 +24,8 @@ public class TimetableActivity extends BrowserActivity {
     @Bean
     protected UrlProvider provider;
 
-    @Bean
-    protected PreferenceProvider preferenceProvider;
+    @Pref
+    protected ISASPrefs_ prefs;
 
     @OptionsItem
     protected void myClass() {
@@ -47,7 +48,7 @@ public class TimetableActivity extends BrowserActivity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        if (preferenceProvider.isTeacher()) {
+        if (prefs.teacherMode().get()) {
             menu.findItem(R.id.myClass).setVisible(false);
             menu.findItem(R.id.otherClass).setVisible(false);
         }

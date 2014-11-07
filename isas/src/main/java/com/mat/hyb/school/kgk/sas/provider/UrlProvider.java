@@ -1,7 +1,9 @@
 package com.mat.hyb.school.kgk.sas.provider;
 
-import org.androidannotations.annotations.Bean;
+import com.mat.hyb.school.kgk.sas.settings.ISASPrefs_;
+
 import org.androidannotations.annotations.EBean;
+import org.androidannotations.annotations.sharedpreferences.Pref;
 
 import java.util.Calendar;
 
@@ -25,12 +27,12 @@ public class UrlProvider {
 
     private static final String TEACHER_SUBSTITUTION_URL
             = "http://www.gymkyjov.cz/isas/suplovani.php?zobraz=suplujici&suplovani=";
-    @Bean
-    PreferenceProvider preferencesProvider;
+    @Pref
+    protected ISASPrefs_ prefs;
 
     public String getSubstitutionTodayUrl() {
         String url = SUBSTITUTION_URL;
-        if (preferencesProvider.isTeacher()) {
+        if (prefs.teacherMode().get()) {
             url = TEACHER_SUBSTITUTION_URL;
         }
         return url + getSavedId();
@@ -38,7 +40,7 @@ public class UrlProvider {
 
     public String getSubstitutionTomorrowUrl() {
         String url = SUBSTITUTION_URL;
-        if (preferencesProvider.isTeacher()) {
+        if (prefs.teacherMode().get()) {
             url = TEACHER_SUBSTITUTION_URL;
         }
         return url + getSavedId() + DATE + getTomorrowDate();
@@ -71,27 +73,24 @@ public class UrlProvider {
     }
 
     private String getSavedId() {
-        if (preferencesProvider.isTeacher()) {
-            return String.valueOf(preferencesProvider.getTeacherId().getNumber());
-        }
-        return String.valueOf(preferencesProvider.getDefaultClass().getId());
+        return String.valueOf(prefs.id().get());
     }
 
     private int getSavedClassId() {
-        return preferencesProvider.getDefaultClass().getId();
+        return prefs.id().get();
     }
 
     public String getTimetableUrl(int id) {
         String url = TIMETABLE;
-        if (preferencesProvider.isTeacher()) {
+        if (prefs.teacherMode().get()) {
             url = TEACHER_TIMETABLE;
         }
         return url + Integer.valueOf(id);
     }
 
     public String getOurTimetableUrl() {
-        if (preferencesProvider.isTeacher()) {
-            return getTimetableUrl(preferencesProvider.getTeacherId().getNumber());
+        if (prefs.teacherMode().get()) {
+            return getTimetableUrl(prefs.id().get());
         }
         return getTimetableUrl(getSavedClassId());
     }

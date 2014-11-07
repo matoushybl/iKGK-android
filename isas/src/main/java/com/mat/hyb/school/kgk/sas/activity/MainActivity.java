@@ -7,8 +7,8 @@ import android.support.v7.app.ActionBarActivity;
 
 import com.mat.hyb.school.kgk.sas.R;
 import com.mat.hyb.school.kgk.sas.provider.ClassID;
-import com.mat.hyb.school.kgk.sas.provider.PreferenceProvider;
 import com.mat.hyb.school.kgk.sas.provider.UrlProvider;
+import com.mat.hyb.school.kgk.sas.settings.ISASPrefs_;
 import com.mat.hyb.school.kgk.sas.view.ClassChooserDialog;
 import com.mat.hyb.school.kgk.sas.view.MainTile;
 
@@ -20,8 +20,7 @@ import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.res.StringRes;
-
-import java.util.Calendar;
+import org.androidannotations.annotations.sharedpreferences.Pref;
 
 @OptionsMenu(R.menu.main)
 @EActivity(R.layout.activity_main)
@@ -30,8 +29,8 @@ public class MainActivity extends ActionBarActivity {
     @Bean
     protected UrlProvider urlProvider;
 
-    @Bean
-    protected PreferenceProvider preferenceProvider;
+    @Pref
+    protected ISASPrefs_ prefs;
 
     @StringRes
     protected String marks;
@@ -61,7 +60,7 @@ public class MainActivity extends ActionBarActivity {
 
     @Click
     protected void timetableClicked() {
-        if (preferenceProvider.isOpeningInBrowserEnabled()) {
+        if (prefs.externalBrowserMode().get()) {
             openInBrowser(urlProvider.getOurTimetableUrl());
         } else {
             TimetableActivity_.intent(this)
@@ -88,7 +87,7 @@ public class MainActivity extends ActionBarActivity {
 
     @Click
     protected void substitutionClicked() {
-        if (preferenceProvider.isOpeningInBrowserEnabled()) {
+        if (prefs.externalBrowserMode().get()) {
             openInBrowser(urlProvider.getSuggestedDateUrl());
         } else {
             SubstitutionActivity_.intent(this)
@@ -101,32 +100,17 @@ public class MainActivity extends ActionBarActivity {
     @AfterViews
     protected void init() {
         getSupportActionBar().setElevation(0);
-        if (preferenceProvider.isFirstRun() || shouldUpdateClass()) {
+        if (prefs.firstRun().get()) {
             ClassChooserDialog dialog = new ClassChooserDialog(this);
             dialog.setSelectedListener(new ClassChooserDialog.ClassSelectedListener() {
                 @Override
                 public void selected(ClassID id) {
-                    preferenceProvider.setDefaultClass(id);
-                    preferenceProvider.setFirstRun();
-                    preferenceProvider.setLastChange(System.currentTimeMillis());
+                    prefs.id().put(id.getId());
+                    prefs.firstRun().put(false);
                 }
             });
             dialog.show();
         }
-    }
-
-    private boolean shouldUpdateClass() {
-        if (preferenceProvider.getLastChange() == 0) {
-            return true;
-        }
-        Calendar lastUpdateCalendar = Calendar.getInstance();
-        lastUpdateCalendar.setTimeInMillis(preferenceProvider.getLastChange());
-
-        Calendar currentCalendar = Calendar.getInstance();
-
-        return (lastUpdateCalendar.get(Calendar.MONTH) < Calendar.SEPTEMBER
-                || lastUpdateCalendar.get(Calendar.YEAR) < currentCalendar.get(Calendar.YEAR))
-                && currentCalendar.get(Calendar.MONTH) >= Calendar.SEPTEMBER;
     }
 
     @OptionsItem
@@ -135,7 +119,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void openInBrowserActivity(String url, String title) {
-        if (preferenceProvider.isOpeningInBrowserEnabled()) {
+        if (prefs.externalBrowserMode().get()) {
             openInBrowser(url);
         } else {
             BrowserActivity_.intent(this).title(title).url(url).start();

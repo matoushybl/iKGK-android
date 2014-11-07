@@ -53,11 +53,11 @@ public enum TeacherID {
 
 
     private String name;
-    private int number;
+    private int id;
 
-    TeacherID(String name, int number) {
+    TeacherID(String name, int id) {
         this.name = name;
-        this.number = number;
+        this.id = id;
     }
 
     public static List<String> getNames() {
@@ -81,7 +81,7 @@ public enum TeacherID {
         return name;
     }
 
-    public int getNumber() {
-        return number;
+    public int getId() {
+        return id;
     }
 }

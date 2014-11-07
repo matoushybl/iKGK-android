@@ -11,9 +11,8 @@ import android.widget.ListView;
 
 import com.mat.hyb.school.kgk.sas.R;
 import com.mat.hyb.school.kgk.sas.provider.ClassID;
-import com.mat.hyb.school.kgk.sas.provider.PreferenceProvider;
-import com.mat.hyb.school.kgk.sas.provider.PreferenceProvider_;
 import com.mat.hyb.school.kgk.sas.provider.TeacherID;
+import com.mat.hyb.school.kgk.sas.settings.ISASPrefs_;
 
 import java.util.List;
 
@@ -31,7 +30,7 @@ public class ClassChooserDialog extends Dialog {
 
     public ClassChooserDialog(final Context context) {
         super(context);
-        final PreferenceProvider provider = PreferenceProvider_.getInstance_(context);
+        final ISASPrefs_ prefs = new ISASPrefs_(context);
         setContentView(R.layout.dialog_classchooser);
         setCancelable(false);
         ListView listView = (ListView) findViewById(R.id.classes);
@@ -43,7 +42,7 @@ public class ClassChooserDialog extends Dialog {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 selectedListener.selected(ClassID.getEnumByName(classes.get(i)));
-                provider.setTeacher(false);
+                prefs.teacherMode().put(false);
                 dismiss();
             }
         });
@@ -61,9 +60,9 @@ public class ClassChooserDialog extends Dialog {
                 dialog.setSelectedListener(new TeacherChooserDialog.TeacherSelectedListener() {
                     @Override
                     public void selected(TeacherID id) {
-                        provider.setTeacher(true);
-                        provider.setTeacherId(id);
-                        provider.setFirstRun();
+                        prefs.teacherMode().put(true);
+                        prefs.id().put(id.getId());
+                        prefs.firstRun().put(false);
                         dialog.dismiss();
                     }
                 });

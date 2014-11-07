@@ -1,5 +1,6 @@
 package com.mat.hyb.school.kgk.sas.settings;
 
+import org.androidannotations.annotations.sharedpreferences.DefaultBoolean;
 import org.androidannotations.annotations.sharedpreferences.SharedPref;
 
 /**
@@ -14,5 +15,6 @@ public interface ISASPrefs {
 
     boolean externalBrowserMode();
 
+    @DefaultBoolean(true)
     boolean firstRun();
 }
