@@ -6,6 +6,10 @@
             android:key="externalBrowserMode"
             android:summary="@string/open_preference_summary"
             android:title="@string/open_preference_title"/>
+        <CheckBoxPreference
+            android:key="browserShortcut"
+            android:summary="@string/pref_shortcut_summary"
+            android:title="@string/pref_shortcut_title"/>
         <Preference
             android:key="class"
             android:summary="@string/change_class_summary"

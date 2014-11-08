@@ -10,7 +10,7 @@ import android.preference.Preference;
 import android.preference.PreferenceFragment;
 
 import com.mat.hyb.school.kgk.sas.R;
-import com.mat.hyb.school.kgk.sas.provider.ClassID;
+import com.mat.hyb.school.kgk.sas.utility.ClassID;
 import com.mat.hyb.school.kgk.sas.view.ClassChooserDialog;
 
 import org.androidannotations.annotations.EFragment;

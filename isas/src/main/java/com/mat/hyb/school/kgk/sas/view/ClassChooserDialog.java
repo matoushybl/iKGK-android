@@ -10,9 +10,9 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.mat.hyb.school.kgk.sas.R;
-import com.mat.hyb.school.kgk.sas.provider.ClassID;
-import com.mat.hyb.school.kgk.sas.provider.TeacherID;
 import com.mat.hyb.school.kgk.sas.settings.ISASPrefs_;
+import com.mat.hyb.school.kgk.sas.utility.ClassID;
+import com.mat.hyb.school.kgk.sas.utility.TeacherID;
 
 import java.util.List;
 

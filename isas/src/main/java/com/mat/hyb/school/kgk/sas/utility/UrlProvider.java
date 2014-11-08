@@ -1,4 +1,4 @@
-package com.mat.hyb.school.kgk.sas.provider;
+package com.mat.hyb.school.kgk.sas.utility;
 
 import com.mat.hyb.school.kgk.sas.settings.ISASPrefs_;
 

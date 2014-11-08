@@ -35,5 +35,8 @@
     <string name="teacher_button_text">Teachers</string>
     <string name="teacher_dialog_title">Set teacher…</string>
     <string name="author_summary">Jakub Šlancar (design), Matouš Hýbl (code)</string>
+    <string name="menu_create_shortcut">Create shortcut</string>
+    <string name="pref_shortcut_summary">Enable to open shortcuts directly in your browser</string>
+    <string name="pref_shortcut_title">Open shortcuts in external browser</string>
 
 </resources>

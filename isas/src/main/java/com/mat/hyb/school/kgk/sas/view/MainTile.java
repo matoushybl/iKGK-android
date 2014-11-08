@@ -12,6 +12,7 @@ import com.mat.hyb.school.kgk.sas.R;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
+import org.androidannotations.annotations.res.ColorRes;
 
 /**
  * @author <a href="mailto:hyblmatous@gmail.com">Matous Hybl</a>
@@ -24,6 +25,9 @@ public class MainTile extends LinearLayout {
 
     @ViewById
     protected ImageView icon;
+
+    @ColorRes
+    protected int tileBackground;
 
     private int iconId;
     private String text1;
@@ -42,5 +46,6 @@ public class MainTile extends LinearLayout {
     protected void init() {
         text.setText(text1);
         icon.setImageResource(iconId);
+        setBackgroundColor(tileBackground);
     }
 }

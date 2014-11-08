@@ -17,4 +17,6 @@ public interface ISASPrefs {
 
     @DefaultBoolean(true)
     boolean firstRun();
+
+    boolean browserShortcut();
 }

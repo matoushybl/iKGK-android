@@ -16,8 +16,8 @@
             android:id="@+id/marks"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
             android:layout_weight="1"
-            android:paddingRight="16dp"
             app:text="@string/marks"
             app:tile_icon="@drawable/ic_marks"/>
 
@@ -25,8 +25,8 @@
             android:id="@+id/substitution"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
             android:layout_weight="1"
-            android:paddingRight="16dp"
             app:text="@string/substitution"
             app:tile_icon="@drawable/ic_subst"/>
 
@@ -51,8 +51,8 @@
             android:id="@+id/moodle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
             android:layout_weight="1"
-            android:paddingRight="16dp"
             app:text="@string/moodle"
             app:tile_icon="@drawable/ic_moodle"/>
 
@@ -60,8 +60,8 @@
             android:id="@+id/canteen"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
             android:layout_weight="1"
-            android:paddingRight="16dp"
             app:text="@string/canteen"
             app:tile_icon="@drawable/ic_canteen"/>
 

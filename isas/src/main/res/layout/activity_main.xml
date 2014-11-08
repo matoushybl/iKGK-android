@@ -16,8 +16,8 @@
             android:id="@+id/marks"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
             android:layout_weight="1"
-            android:paddingRight="8dp"
             app:text="@string/marks"
             app:tile_icon="@drawable/ic_marks"/>
 
@@ -26,7 +26,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:paddingLeft="8dp"
             app:text="@string/substitution"
             app:tile_icon="@drawable/ic_subst"/>
 
@@ -43,8 +42,8 @@
             android:id="@+id/timetable"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
             android:layout_weight="1"
-            android:paddingRight="8dp"
             app:text="@string/timetable"
             app:tile_icon="@drawable/ic_timetable"/>
 
@@ -53,7 +52,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:paddingLeft="8dp"
             app:text="@string/moodle"
             app:tile_icon="@drawable/ic_moodle"/>
 
@@ -70,8 +68,8 @@
             android:id="@+id/canteen"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
             android:layout_weight="1"
-            android:paddingRight="8dp"
             app:text="@string/canteen"
             app:tile_icon="@drawable/ic_canteen"/>
 
@@ -80,7 +78,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:paddingLeft="8dp"
             app:text="@string/website"
             app:tile_icon="@drawable/ic_school"/>
 

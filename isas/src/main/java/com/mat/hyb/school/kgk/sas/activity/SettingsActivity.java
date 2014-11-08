@@ -21,6 +21,7 @@ public class SettingsActivity extends ActionBarActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setIcon(R.drawable.ic_ab);
         getSupportActionBar().setTitle(R.string.action_settings);
+        getSupportActionBar().setElevation(0);
         getFragmentManager().beginTransaction().replace(android.R.id.content, new SettingsFragment_()).commit();
     }
 

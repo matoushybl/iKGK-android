@@ -18,4 +18,8 @@
         android:id="@+id/open"
         android:title="@string/open"/>
 
+    <item
+        android:id="@+id/shortcut"
+        android:title="@string/menu_create_shortcut"/>
+
 </menu>

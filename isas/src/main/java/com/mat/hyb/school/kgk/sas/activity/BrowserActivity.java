@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -15,11 +16,13 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.mat.hyb.school.kgk.sas.R;
+import com.mat.hyb.school.kgk.sas.utility.ShortcutHelper;
+import com.mat.hyb.school.kgk.sas.utility.UrlProvider;
 import com.mat.hyb.school.kgk.sas.view.HttpAuthenticationDialog;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
-import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.OptionsMenuItem;
@@ -30,16 +33,13 @@ import org.androidannotations.annotations.ViewById;
  */
 @OptionsMenu(R.menu.browser)
 @EActivity(R.layout.activity_browser)
-public class BrowserActivity extends ActionBarActivity {
+public abstract class BrowserActivity extends ActionBarActivity {
+
+    @Bean
+    protected UrlProvider urlProvider;
 
     @ViewById
     protected WebView webView;
-
-    @Extra
-    protected String url;
-
-    @Extra
-    protected String title;
 
     @OptionsMenuItem
     protected MenuItem refresh;
@@ -49,9 +49,7 @@ public class BrowserActivity extends ActionBarActivity {
         getSupportActionBar().setElevation(0);
         setSupportProgressBarVisibility(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        if (title != null) {
-            setTitle(title);
-        }
+        setTitle(getActivityTitle());
         CookieManager.getInstance().setAcceptCookie(true);
         webView.setWebChromeClient(new WebChromeClient() {
             @Override
@@ -119,7 +117,7 @@ public class BrowserActivity extends ActionBarActivity {
         webView.getSettings().setUseWideViewPort(true);
         webView.getSettings().setLoadWithOverviewMode(true);
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.loadUrl(url);
+        webView.loadUrl(getBaseUrl());
     }
 
     @OptionsItem(android.R.id.home)
@@ -175,4 +173,27 @@ public class BrowserActivity extends ActionBarActivity {
         intent.setData(Uri.parse(webView.getUrl()));
         startActivity(intent);
     }
+
+    @OptionsItem
+    protected void shortcut() {
+        ShortcutHelper.createShortcut(this, getActivityTitle(), getShortcutType(), getShortcutResource());
+    }
+
+    protected abstract String getShortcutType();
+
+    protected abstract String getBaseUrl();
+
+    protected abstract String getActivityTitle();
+
+    protected WebView getWebView() {
+        return webView;
+    }
+
+    protected UrlProvider getUrlProvider() {
+        return urlProvider;
+    }
+
+    protected abstract
+    @DrawableRes
+    int getShortcutResource();
 }

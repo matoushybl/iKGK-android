@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="baseColor">#ff8800</color>
-    <color name="inverseColor">#0099cc</color>
+    <color name="windowBackground">@android:color/white</color>
+    <color name="primary">#FF9800</color>
+    <color name="primaryDark">#E65100</color>
+    <color name="tileBackground">#d3d3d3</color>
 </resources>
