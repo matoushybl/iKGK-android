@@ -11,6 +11,7 @@ import android.preference.PreferenceFragment;
 
 import com.android.colorpicker.ColorPickerDialog;
 import com.android.colorpicker.ColorPickerSwatch;
+import com.google.android.gms.analytics.HitBuilders;
 import com.mat.hyb.school.kgk.sas.R;
 import com.mat.hyb.school.kgk.sas.activity.BaseActivity;
 import com.mat.hyb.school.kgk.sas.utility.ClassID;
@@ -74,6 +75,11 @@ public class SettingsFragment extends PreferenceFragment {
                         @Override
                         public void onColorSelected(int color) {
                             prefs.colorTheme().put(color);
+                            activity.getTracker().send(new HitBuilders.EventBuilder()
+                                    .setCategory(BaseActivity.CATEGORY_FEATURE)
+                                    .setAction("theme")
+                                    .setLabel(String.valueOf(color))
+                                    .build());
                             AlertDialog.Builder builder = new AlertDialog.Builder(activity);
                             builder.setTitle(activity.getString(R.string.dialog_restart_title));
                             builder.setMessage(activity.getString(R.string.dialog_restart_message));

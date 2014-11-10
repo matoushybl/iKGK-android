@@ -35,8 +35,6 @@ import org.androidannotations.annotations.ViewById;
 @EActivity(R.layout.activity_browser)
 public abstract class BrowserActivity extends BaseActivity {
 
-    private static final String CATEGORY_FEATURE = "feature";
-
     @Bean
     protected UrlProvider urlProvider;
 

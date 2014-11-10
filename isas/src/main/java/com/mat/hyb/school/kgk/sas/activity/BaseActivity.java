@@ -21,8 +21,8 @@ public abstract class BaseActivity extends ActionBarActivity {
     public static final String CATEGORY_ID = "id";
     public static final String CATEGORY_TEACHER = "teacher";
     public static final String CATEGORY_SOURCE = "source";
+    public static final String CATEGORY_FEATURE = "feature";
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,29 +36,30 @@ public abstract class BaseActivity extends ActionBarActivity {
         int color = prefs.colorTheme().get();
         if (color == orange) {
             setTheme(R.style.AppTheme);
-            setStatusBarColor(R.color.primaryDark);
+            setStatusBarColor(getResources().getColor(R.color.primaryDark));
         } else if (color == blue) {
             setTheme(R.style.BlueAppTheme);
-            setStatusBarColor(R.color.darkBlue);
+            setStatusBarColor(getResources().getColor(R.color.darkBlue));
         } else if (color == red) {
             setTheme(R.style.RedAppTheme);
-            setStatusBarColor(R.color.darkRed);
+            setStatusBarColor(getResources().getColor(R.color.darkRed));
         } else if (color == pink) {
             setTheme(R.style.PinkAppTheme);
-            setStatusBarColor(R.color.darkPink);
+            setStatusBarColor(getResources().getColor(R.color.darkPink));
         } else if (color == green) {
             setTheme(R.style.GreenAppTheme);
-            setStatusBarColor(R.color.darkGreen);
+            setStatusBarColor(getResources().getColor(R.color.darkGreen));
         } else if (color == purple) {
             setTheme(R.style.PurpleAppTheme);
-            setStatusBarColor(R.color.darkPurple);
+            setStatusBarColor(getResources().getColor(R.color.darkPurple));
         }
         ((BaseApplication) getApplication()).getTracker(BaseApplication.TrackerName.APP_TRACKER);
     }
 
-    private void setStatusBarColor(int colorRes) {
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private void setStatusBarColor(int color) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.L) {
-            getWindow().setStatusBarColor(getResources().getColor(colorRes));
+            getWindow().setStatusBarColor(color);
         }
     }
 
@@ -74,7 +75,7 @@ public abstract class BaseActivity extends ActionBarActivity {
         GoogleAnalytics.getInstance(this).reportActivityStop(this);
     }
 
-    protected Tracker getTracker() {
+    public Tracker getTracker() {
         return ((BaseApplication) getApplication()).getTracker(BaseApplication.TrackerName.APP_TRACKER);
     }
 
