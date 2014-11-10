@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.mat.hyb.school.kgk.sas.R;
+import com.mat.hyb.school.kgk.sas.activity.BaseActivity;
 import com.mat.hyb.school.kgk.sas.settings.ISASPrefs_;
 import com.mat.hyb.school.kgk.sas.utility.ClassID;
 import com.mat.hyb.school.kgk.sas.utility.TeacherID;
@@ -30,6 +31,7 @@ public class ClassChooserDialog extends Dialog {
 
     public ClassChooserDialog(final Context context) {
         super(context);
+        final BaseActivity baseActivity = (BaseActivity) context;
         final ISASPrefs_ prefs = new ISASPrefs_(context);
         setContentView(R.layout.dialog_classchooser);
         setCancelable(false);
@@ -63,6 +65,7 @@ public class ClassChooserDialog extends Dialog {
                         prefs.teacherMode().put(true);
                         prefs.id().put(id.getId());
                         prefs.firstRun().put(false);
+                        baseActivity.sendEvent(BaseActivity.CATEGORY_TEACHER, "selected");
                         dialog.dismiss();
                     }
                 });

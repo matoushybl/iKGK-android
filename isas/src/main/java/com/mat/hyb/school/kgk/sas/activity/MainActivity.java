@@ -3,7 +3,6 @@ package com.mat.hyb.school.kgk.sas.activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.provider.Browser;
-import android.support.v7.app.ActionBarActivity;
 
 import com.mat.hyb.school.kgk.sas.R;
 import com.mat.hyb.school.kgk.sas.settings.ISASPrefs_;
@@ -21,7 +20,7 @@ import org.androidannotations.annotations.sharedpreferences.Pref;
 
 @OptionsMenu(R.menu.main)
 @EActivity(R.layout.activity_main)
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends BaseActivity {
 
     @Bean
     protected UrlProvider urlProvider;
@@ -31,6 +30,7 @@ public class MainActivity extends ActionBarActivity {
 
     @Click
     protected void marksClicked() {
+        sendEvent(CATEGORY_PAGE, "marks");
         if (prefs.externalBrowserMode().get()) {
             openInBrowser(urlProvider.getOurTimetableUrl());
         } else {
@@ -40,6 +40,7 @@ public class MainActivity extends ActionBarActivity {
 
     @Click
     protected void timetableClicked() {
+        sendEvent(CATEGORY_PAGE, "timetable");
         if (prefs.externalBrowserMode().get()) {
             openInBrowser(urlProvider.getOurTimetableUrl());
         } else {
@@ -49,6 +50,7 @@ public class MainActivity extends ActionBarActivity {
 
     @Click
     protected void canteenClicked() {
+        sendEvent(CATEGORY_PAGE, "canteen");
         if (prefs.externalBrowserMode().get()) {
             openInBrowser(urlProvider.getOurTimetableUrl());
         } else {
@@ -58,6 +60,7 @@ public class MainActivity extends ActionBarActivity {
 
     @Click
     protected void moodleClicked() {
+        sendEvent(CATEGORY_PAGE, "moodle");
         if (prefs.externalBrowserMode().get()) {
             openInBrowser(urlProvider.getOurTimetableUrl());
         } else {
@@ -67,6 +70,7 @@ public class MainActivity extends ActionBarActivity {
 
     @Click
     protected void websiteClicked() {
+        sendEvent(CATEGORY_PAGE, "website");
         if (prefs.externalBrowserMode().get()) {
             openInBrowser(urlProvider.getOurTimetableUrl());
         } else {
@@ -76,6 +80,7 @@ public class MainActivity extends ActionBarActivity {
 
     @Click
     protected void substitutionClicked() {
+        sendEvent(CATEGORY_PAGE, "substitution");
         if (prefs.externalBrowserMode().get()) {
             openInBrowser(urlProvider.getSuggestedDateUrl());
         } else {
@@ -93,6 +98,7 @@ public class MainActivity extends ActionBarActivity {
                 public void selected(ClassID id) {
                     prefs.id().put(id.getId());
                     prefs.firstRun().put(false);
+                    sendEvent(CATEGORY_ID, String.valueOf(id.getId()));
                 }
             });
             dialog.show();

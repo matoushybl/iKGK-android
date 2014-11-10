@@ -10,6 +10,7 @@ import android.preference.Preference;
 import android.preference.PreferenceFragment;
 
 import com.mat.hyb.school.kgk.sas.R;
+import com.mat.hyb.school.kgk.sas.activity.BaseActivity;
 import com.mat.hyb.school.kgk.sas.utility.ClassID;
 import com.mat.hyb.school.kgk.sas.view.ClassChooserDialog;
 
@@ -35,6 +36,8 @@ public class SettingsFragment extends PreferenceFragment {
         super.onCreate(savedInstanceState);
         getPreferenceManager().setSharedPreferencesName("ISASPrefs");
 
+        final BaseActivity activity = (BaseActivity) getActivity();
+
         addPreferencesFromResource(R.xml.settings);
 
         Preference changeClass = findPreference(CLASS_KEY);
@@ -47,6 +50,7 @@ public class SettingsFragment extends PreferenceFragment {
                         @Override
                         public void selected(ClassID id) {
                             prefs.id().put(id.getId());
+                            activity.sendEvent(BaseActivity.CATEGORY_ID, String.valueOf(id.getId()));
                         }
                     });
                     dialog.show();
@@ -70,6 +74,7 @@ public class SettingsFragment extends PreferenceFragment {
             source.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
+                    activity.sendEvent(BaseActivity.CATEGORY_SOURCE, "click");
                     Intent intent = new Intent(Intent.ACTION_VIEW);
                     intent.setData(Uri.parse("https://github.com/matoushybl/iSASv2/tree/develop"));
                     startActivity(intent);

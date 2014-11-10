@@ -32,7 +32,7 @@ public class TeacherChooserDialog extends Dialog {
     }
 
 
-    void init() {
+    private void init() {
         setCancelable(false);
         ListView listView = new ListView(getContext());
         classes = TeacherID.getNames();

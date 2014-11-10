@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.14.0'
+        classpath 'com.android.tools.build:gradle:0.14.1'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.4'
     }
 }
@@ -58,4 +58,6 @@ dependencies {
     apt 'org.androidannotations:androidannotations:3.1'
     compile 'org.androidannotations:androidannotations-api:3.1'
     compile "com.android.support:appcompat-v7:21.0.0"
+    compile 'com.google.android.gms:play-services:6.1.11'
+
 }

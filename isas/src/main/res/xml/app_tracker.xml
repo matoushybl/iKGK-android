@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <bool name="ga_reportUncaughtExceptions">true</bool>
+
+    <bool name="ga_autoActivityTracking">true</bool>
+
+    <integer name="ga_sessionTimeout">-1</integer>
+
+    <string name="ga_sampleFrequency">100.0</string>
+
+    <bool name="ga_autoActivityTracking">true</bool>
+
+    <screenName name="com.mat.hyb.school.kgk.sas.activity.BaseActivity">
+        Base Activity
+    </screenName>
+
+    <string name="ga_trackingId">UA-56547795-1</string>
+</resources>

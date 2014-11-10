@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
-import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.CookieManager;
@@ -15,6 +14,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.google.android.gms.analytics.HitBuilders;
 import com.mat.hyb.school.kgk.sas.R;
 import com.mat.hyb.school.kgk.sas.utility.ShortcutHelper;
 import com.mat.hyb.school.kgk.sas.utility.UrlProvider;
@@ -33,7 +33,9 @@ import org.androidannotations.annotations.ViewById;
  */
 @OptionsMenu(R.menu.browser)
 @EActivity(R.layout.activity_browser)
-public abstract class BrowserActivity extends ActionBarActivity {
+public abstract class BrowserActivity extends BaseActivity {
+
+    private static final String CATEGORY_FEATURE = "feature";
 
     @Bean
     protected UrlProvider urlProvider;
@@ -176,6 +178,11 @@ public abstract class BrowserActivity extends ActionBarActivity {
 
     @OptionsItem
     protected void shortcut() {
+        getTracker().send(new HitBuilders.EventBuilder()
+                .setCategory(CATEGORY_FEATURE)
+                .setAction("shortcut")
+                .setLabel(getActivityTitle())
+                .build());
         ShortcutHelper.createShortcut(this, getActivityTitle(), getShortcutType(), getShortcutResource());
     }
 
