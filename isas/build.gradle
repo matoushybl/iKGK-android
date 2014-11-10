@@ -36,17 +36,19 @@ android {
     signingConfigs {
         release {
             if (System.console() != null) {
-                storeFile file(System.console().readLine("\n\$ Enter keystore path: "))
-                storePassword System.console().readLine("\n\$ Enter keystore password: ")
-                keyAlias System.console().readLine("\n\$ Enter key Alias: ")
-                keyPassword System.console().readLine("\n\$ Enter key password: ")
+                storeFile file(ISAS_KEYSTORE)
+                storePassword ISAS_KEYSTORE_PASSWORD
+                keyAlias ISAS_KEY_ALIAS
+                keyPassword ISAS_KEY_PASSWORD
             }
         }
     }
 
     buildTypes {
         release {
-            runProguard false
+            minifyEnabled true
+            shrinkResources true
+            runProguard true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
             signingConfig signingConfigs.release
         }
