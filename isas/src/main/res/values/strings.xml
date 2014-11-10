@@ -41,5 +41,10 @@
     <string name="rate_title">Rate this app</string>
     <string name="share">Share</string>
     <string name="share_dialog_title">Share…</string>
+    <string name="theme_dialog_title">Pick color theme</string>
+    <string name="pref_theme_title">Theme</string>
+    <string name="pref_theme_summary">Change color theme</string>
+    <string name="dialog_restart_title">Restart is required.</string>
+    <string name="dialog_restart_message">This app needs to be restarted to change theme</string>
 
 </resources>

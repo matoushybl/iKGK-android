@@ -14,6 +14,11 @@
             android:key="class"
             android:summary="@string/change_class_summary"
             android:title="@string/change_class_title"/>
+
+        <Preference
+            android:key="theme"
+            android:summary="@string/pref_theme_summary"
+            android:title="@string/pref_theme_title"/>
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/about_group_title">

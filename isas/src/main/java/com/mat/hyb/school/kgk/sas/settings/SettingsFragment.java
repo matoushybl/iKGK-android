@@ -9,12 +9,15 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 
+import com.android.colorpicker.ColorPickerDialog;
+import com.android.colorpicker.ColorPickerSwatch;
 import com.mat.hyb.school.kgk.sas.R;
 import com.mat.hyb.school.kgk.sas.activity.BaseActivity;
 import com.mat.hyb.school.kgk.sas.utility.ClassID;
 import com.mat.hyb.school.kgk.sas.view.ClassChooserDialog;
 
 import org.androidannotations.annotations.EFragment;
+import org.androidannotations.annotations.res.ColorRes;
 import org.androidannotations.annotations.sharedpreferences.Pref;
 
 /**
@@ -27,9 +30,28 @@ public class SettingsFragment extends PreferenceFragment {
     private static final String CLASS_KEY = "class";
     private static final String SOURCE_KEY = "source";
     private static final String LIBS_KEY = "libs";
+    private static final String THEME_KEY = "theme";
 
     @Pref
     protected ISASPrefs_ prefs;
+
+    @ColorRes
+    protected int orange;
+
+    @ColorRes
+    protected int blue;
+
+    @ColorRes
+    protected int red;
+
+    @ColorRes
+    protected int pink;
+
+    @ColorRes
+    protected int green;
+
+    @ColorRes
+    protected int purple;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,6 +61,40 @@ public class SettingsFragment extends PreferenceFragment {
         final BaseActivity activity = (BaseActivity) getActivity();
 
         addPreferencesFromResource(R.xml.settings);
+
+        Preference theme = findPreference(THEME_KEY);
+        if (theme != null) {
+            theme.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    int[] colors = new int[]{orange, blue, red, pink, green, purple};
+                    ColorPickerDialog dialog = new ColorPickerDialog();
+                    dialog.initialize(R.string.theme_dialog_title, colors, prefs.colorTheme().get(), 3, ColorPickerDialog.SIZE_SMALL);
+                    dialog.setOnColorSelectedListener(new ColorPickerSwatch.OnColorSelectedListener() {
+                        @Override
+                        public void onColorSelected(int color) {
+                            prefs.colorTheme().put(color);
+                            AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+                            builder.setTitle(activity.getString(R.string.dialog_restart_title));
+                            builder.setMessage(activity.getString(R.string.dialog_restart_message));
+                            builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Intent intent = activity.getPackageManager()
+                                            .getLaunchIntentForPackage(getActivity().getApplication().getPackageName());
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    startActivity(intent);
+                                    System.exit(0);
+                                }
+                            });
+                            builder.show();
+                        }
+                    });
+                    dialog.show(getFragmentManager(), "colorpicker");
+                    return true;
+                }
+            });
+        }
 
         Preference changeClass = findPreference(CLASS_KEY);
         if (changeClass != null) {

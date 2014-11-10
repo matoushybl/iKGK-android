@@ -20,7 +20,7 @@
         android:background="#e6e6e6"
         android:gravity="center"
         android:text="Marks"
-        android:textColor="@color/primaryDark"
-        android:textSize="20sp"/>
+        android:textColor="?attr/colorPrimaryDark"
+        android:textSize="16sp"/>
 
 </merge>

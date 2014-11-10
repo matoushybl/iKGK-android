@@ -1,6 +1,7 @@
 package com.mat.hyb.school.kgk.sas.settings;
 
 import org.androidannotations.annotations.sharedpreferences.DefaultBoolean;
+import org.androidannotations.annotations.sharedpreferences.DefaultInt;
 import org.androidannotations.annotations.sharedpreferences.SharedPref;
 
 /**
@@ -19,4 +20,7 @@ public interface ISASPrefs {
     boolean firstRun();
 
     boolean browserShortcut();
+
+    @DefaultInt(-26624)
+    int colorTheme();
 }
