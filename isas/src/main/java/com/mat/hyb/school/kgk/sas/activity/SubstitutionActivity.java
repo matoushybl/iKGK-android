@@ -48,4 +48,9 @@ public class SubstitutionActivity extends BrowserActivity {
     protected int getShortcutResource() {
         return R.drawable.ic_shortcut_subst;
     }
+
+    @Override
+    protected boolean isSharingEnabled() {
+        return true;
+    }
 }

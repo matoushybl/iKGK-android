@@ -152,6 +152,7 @@ public abstract class BrowserActivity extends BaseActivity {
         if (webView != null) {
             menu.findItem(R.id.forward).setEnabled(webView.canGoForward());
             menu.findItem(R.id.backward).setEnabled(webView.canGoBack());
+            menu.findItem(R.id.share).setVisible(isSharingEnabled());
         }
         return super.onPrepareOptionsMenu(menu);
     }
@@ -186,6 +187,15 @@ public abstract class BrowserActivity extends BaseActivity {
         ShortcutHelper.createShortcut(this, getActivityTitle(), getShortcutType(), getShortcutResource());
     }
 
+    @OptionsItem
+    protected void share() {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_TEXT, webView.getUrl());
+        intent.putExtra(Intent.EXTRA_TITLE, getActivityTitle());
+        intent.setType("text/plain");
+        startActivity(Intent.createChooser(intent, getString(R.string.share_dialog_title)));
+    }
+
     protected abstract String getShortcutType();
 
     protected abstract String getBaseUrl();
@@ -203,4 +213,6 @@ public abstract class BrowserActivity extends BaseActivity {
     protected abstract
     @DrawableRes
     int getShortcutResource();
+
+    protected abstract boolean isSharingEnabled();
 }

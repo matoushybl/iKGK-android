@@ -34,4 +34,9 @@ public class CanteenActivity extends BrowserActivity {
     protected int getShortcutResource() {
         return R.drawable.ic_shortcut_canteen;
     }
+
+    @Override
+    protected boolean isSharingEnabled() {
+        return false;
+    }
 }

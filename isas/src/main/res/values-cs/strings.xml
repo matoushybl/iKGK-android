@@ -38,4 +38,7 @@
     <string name="menu_create_shortcut">Vytvořit zkratku</string>
     <string name="pref_shortcut_summary">Povolte pro otevírání zkratek ve vašem prohlížeči</string>
     <string name="pref_shortcut_title">Otevírat zkratky ve Vašem prolížeči</string>
+    <string name="rate_title">Ohodnotit aplikaci</string>
+    <string name="share">Sdílet</string>
+    <string name="share_dialog_title">Sdílet…</string>
 </resources>

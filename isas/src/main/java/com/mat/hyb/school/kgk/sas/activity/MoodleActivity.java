@@ -34,4 +34,9 @@ public class MoodleActivity extends BrowserActivity {
     protected int getShortcutResource() {
         return R.drawable.ic_shortcut_moodle;
     }
+
+    @Override
+    protected boolean isSharingEnabled() {
+        return true;
+    }
 }

@@ -38,5 +38,8 @@
     <string name="menu_create_shortcut">Create shortcut</string>
     <string name="pref_shortcut_summary">Enable to open shortcuts directly in your browser</string>
     <string name="pref_shortcut_title">Open shortcuts in external browser</string>
+    <string name="rate_title">Rate this app</string>
+    <string name="share">Share</string>
+    <string name="share_dialog_title">Share…</string>
 
 </resources>

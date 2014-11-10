@@ -34,4 +34,9 @@ public class WebsiteActivity extends BrowserActivity {
     protected int getShortcutResource() {
         return R.drawable.ic_shortcut_website;
     }
+
+    @Override
+    protected boolean isSharingEnabled() {
+        return true;
+    }
 }

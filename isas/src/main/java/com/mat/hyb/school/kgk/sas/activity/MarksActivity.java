@@ -34,4 +34,9 @@ public class MarksActivity extends BrowserActivity {
     protected int getShortcutResource() {
         return R.drawable.ic_shortcut_marks;
     }
+
+    @Override
+    protected boolean isSharingEnabled() {
+        return false;
+    }
 }

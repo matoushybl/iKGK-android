@@ -73,4 +73,9 @@ public class TimetableActivity extends BrowserActivity {
     protected int getShortcutResource() {
         return R.drawable.ic_shortcut_timetable;
     }
+
+    @Override
+    protected boolean isSharingEnabled() {
+        return true;
+    }
 }

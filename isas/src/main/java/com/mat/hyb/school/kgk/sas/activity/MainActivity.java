@@ -106,6 +106,11 @@ public class MainActivity extends BaseActivity {
     }
 
     @OptionsItem
+    protected void rate() {
+        openInBrowser(UrlProvider.PLAY);
+    }
+
+    @OptionsItem
     protected void settings() {
         SettingsActivity_.intent(this).start();
     }
