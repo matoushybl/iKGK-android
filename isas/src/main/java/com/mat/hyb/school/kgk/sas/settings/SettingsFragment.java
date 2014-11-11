@@ -115,6 +115,7 @@ public class SettingsFragment extends PreferenceFragment {
                             activity.sendEvent(BaseActivity.CATEGORY_ID, String.valueOf(id.getId()));
                         }
                     });
+                    dialog.setCancelable(true);
                     dialog.show();
                     return false;
                 }

@@ -36,7 +36,7 @@ public class SubstitutionActivity extends BrowserActivity {
 
     @Override
     protected String getBaseUrl() {
-        return getUrlProvider().getSuggestedDateUrl();
+        return getUrlProvider().getSuggestedSubstitutionUrl();
     }
 
     @Override

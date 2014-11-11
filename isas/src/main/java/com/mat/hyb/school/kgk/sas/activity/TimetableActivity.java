@@ -49,7 +49,6 @@ public class TimetableActivity extends BrowserActivity {
     public boolean onPrepareOptionsMenu(Menu menu) {
         if (prefs.teacherMode().get()) {
             menu.findItem(R.id.myClass).setVisible(false);
-            menu.findItem(R.id.otherClass).setVisible(false);
         }
         return super.onPrepareOptionsMenu(menu);
     }

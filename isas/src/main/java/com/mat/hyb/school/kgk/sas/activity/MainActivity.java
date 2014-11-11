@@ -32,7 +32,7 @@ public class MainActivity extends BaseActivity {
     protected void marksClicked() {
         sendEvent(CATEGORY_PAGE, "marks");
         if (prefs.externalBrowserMode().get()) {
-            openInBrowser(urlProvider.getOurTimetableUrl());
+            openInBrowser(UrlProvider.MARKS);
         } else {
             MarksActivity_.intent(this).start();
         }
@@ -52,7 +52,7 @@ public class MainActivity extends BaseActivity {
     protected void canteenClicked() {
         sendEvent(CATEGORY_PAGE, "canteen");
         if (prefs.externalBrowserMode().get()) {
-            openInBrowser(urlProvider.getOurTimetableUrl());
+            openInBrowser(UrlProvider.CANTEEN);
         } else {
             CanteenActivity_.intent(this).start();
         }
@@ -62,7 +62,7 @@ public class MainActivity extends BaseActivity {
     protected void moodleClicked() {
         sendEvent(CATEGORY_PAGE, "moodle");
         if (prefs.externalBrowserMode().get()) {
-            openInBrowser(urlProvider.getOurTimetableUrl());
+            openInBrowser(UrlProvider.MOODLE);
         } else {
             MoodleActivity_.intent(this).start();
         }
@@ -72,7 +72,7 @@ public class MainActivity extends BaseActivity {
     protected void websiteClicked() {
         sendEvent(CATEGORY_PAGE, "website");
         if (prefs.externalBrowserMode().get()) {
-            openInBrowser(urlProvider.getOurTimetableUrl());
+            openInBrowser(UrlProvider.WEBSITE);
         } else {
             WebsiteActivity_.intent(this).start();
         }
@@ -82,7 +82,7 @@ public class MainActivity extends BaseActivity {
     protected void substitutionClicked() {
         sendEvent(CATEGORY_PAGE, "substitution");
         if (prefs.externalBrowserMode().get()) {
-            openInBrowser(urlProvider.getSuggestedDateUrl());
+            openInBrowser(urlProvider.getSuggestedSubstitutionUrl());
         } else {
             SubstitutionActivity_.intent(this).start();
         }

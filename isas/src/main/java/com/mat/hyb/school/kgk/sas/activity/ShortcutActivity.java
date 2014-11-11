@@ -51,7 +51,7 @@ public class ShortcutActivity extends Activity {
             } else if (type.equals(TIMETABLE)) {
                 url = provider.getOurTimetableUrl();
             } else {
-                url = provider.getSuggestedDateUrl();
+                url = provider.getSuggestedSubstitutionUrl();
             }
             openInBrowser(url);
             finish();
