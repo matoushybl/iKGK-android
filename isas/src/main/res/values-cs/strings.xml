@@ -22,9 +22,9 @@
     <string name="other_class">Jiná třída</string>
     <string name="today">Dnes</string>
     <string name="nextDay">Další den</string>
-    <string name="open_preference_title">Otevírat stránky v prohlížeči</string>
+    <string name="open_preference_title">Otevírat v prohlížeči</string>
     <string name="general_group_title">Obecné</string>
-    <string name="open_preference_summary">Povolte pro otevírání stránek ve Vašem prohlížeči</string>
+    <string name="open_preference_summary">Povolte pro otevírání stránek prohlížeči</string>
     <string name="about_group_title">O aplikaci</string>
     <string name="author_preference_title">Autoři</string>
     <string name="version_preference_title">Verze aplikace</string>
@@ -36,8 +36,8 @@
     <string name="teacher_dialog_title">Nastavení učitele…</string>
     <string name="author_summary">Jakub Šlancar (design), Matouš Hýbl (kód)</string>
     <string name="menu_create_shortcut">Vytvořit zkratku</string>
-    <string name="pref_shortcut_summary">Povolte pro otevírání zkratek ve vašem prohlížeči</string>
-    <string name="pref_shortcut_title">Otevírat zkratky ve Vašem prolížeči</string>
+    <string name="pref_shortcut_summary">Povolte pro otevírání zkratek prohlížeči</string>
+    <string name="pref_shortcut_title">Otevírat zkratky v prolížeči</string>
     <string name="rate_title">Ohodnotit aplikaci</string>
     <string name="share">Sdílet</string>
     <string name="share_dialog_title">Sdílet…</string>
