@@ -23,4 +23,7 @@ public interface ISASPrefs {
 
     @DefaultInt(-26624)
     int colorTheme();
+
+    @DefaultBoolean(true)
+    boolean lunchReminder();
 }

@@ -7,6 +7,7 @@ import android.provider.Browser;
 import com.mat.hyb.school.kgk.sas.R;
 import com.mat.hyb.school.kgk.sas.settings.ISASPrefs_;
 import com.mat.hyb.school.kgk.sas.utility.ClassID;
+import com.mat.hyb.school.kgk.sas.utility.LunchReminderHelper;
 import com.mat.hyb.school.kgk.sas.utility.UrlProvider;
 import com.mat.hyb.school.kgk.sas.view.ClassChooserDialog;
 
@@ -24,6 +25,9 @@ public class MainActivity extends BaseActivity {
 
     @Bean
     protected UrlProvider urlProvider;
+
+    @Bean
+    protected LunchReminderHelper lunchReminderHelper;
 
     @Pref
     protected ISASPrefs_ prefs;
@@ -103,6 +107,7 @@ public class MainActivity extends BaseActivity {
             });
             dialog.show();
         }
+        lunchReminderHelper.enableTiming();
     }
 
     @OptionsItem

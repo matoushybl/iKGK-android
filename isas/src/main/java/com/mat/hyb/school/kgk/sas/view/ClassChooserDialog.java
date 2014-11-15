@@ -22,6 +22,8 @@ import java.util.List;
  */
 public class ClassChooserDialog extends Dialog {
 
+    private boolean cancelable;
+
     private ClassSelectedListener selectedListener = new ClassSelectedListener() {
         @Override
         public void selected(ClassID id) {
@@ -69,6 +71,7 @@ public class ClassChooserDialog extends Dialog {
                         dialog.dismiss();
                     }
                 });
+                dialog.setCancelable(cancelable);
                 dialog.show();
             }
         });
@@ -77,6 +80,12 @@ public class ClassChooserDialog extends Dialog {
 
     public void setSelectedListener(ClassSelectedListener selectedListener) {
         this.selectedListener = selectedListener;
+    }
+
+    @Override
+    public void setCancelable(boolean flag) {
+        super.setCancelable(flag);
+        cancelable = flag;
     }
 
     public interface ClassSelectedListener {

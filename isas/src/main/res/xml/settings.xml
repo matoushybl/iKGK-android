@@ -15,6 +15,12 @@
             android:summary="@string/change_class_summary"
             android:title="@string/change_class_title"/>
 
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="lunchReminder"
+            android:summary="@string/pref_lunch_reminder_summary"
+            android:title="@string/pref_lunch_reminder_title"/>
+
         <Preference
             android:key="theme"
             android:summary="@string/pref_theme_summary"

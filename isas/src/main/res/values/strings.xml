@@ -46,5 +46,9 @@
     <string name="pref_theme_summary">Change color theme</string>
     <string name="dialog_restart_title">Restart is required.</string>
     <string name="dialog_restart_message">This app needs to be restarted to change theme</string>
+    <string name="notification_lunch_title">Choose your lunch!</string>
+    <string name="notification_lunch_content">Month is almost over, lunches are coming.</string>
+    <string name="pref_lunch_reminder_title">Remind lunch choosing</string>
+    <string name="pref_lunch_reminder_summary">Enable to receive notification when you should choose lunch</string>
 
 </resources>

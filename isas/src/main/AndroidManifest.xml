@@ -45,6 +45,18 @@
         <meta-data
             android:name="com.google.android.gms.analytics.globalConfigResource"
             android:resource="@xml/global_tracker"/>
+
+        <receiver android:name=".receiver.BootReceiver_">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".receiver.DayReceiver_">
+            <intent-filter>
+                <action android:name="com.mat.hyb.school.kgk.isas.dayUpdate"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
