@@ -30,7 +30,7 @@ public class DayReceiver extends BroadcastReceiver {
         if (prefs.lunchReminder().get()) {
             Calendar calendar = Calendar.getInstance();
             if (calendar.get(Calendar.MONTH) != Calendar.JUNE
-                    || calendar.get(Calendar.MONTH) != Calendar.JULY
+                    && calendar.get(Calendar.MONTH) != Calendar.JULY
                     && calendar.get(Calendar.DAY_OF_MONTH) == 25) {
                 lunchReminderHelper.postNotification();
             }
