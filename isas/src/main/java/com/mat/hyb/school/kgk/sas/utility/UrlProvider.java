@@ -1,7 +1,6 @@
 package com.mat.hyb.school.kgk.sas.utility;
 
 import com.mat.hyb.school.kgk.sas.settings.ISASPrefs_;
-
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.sharedpreferences.Pref;
 
@@ -18,7 +17,8 @@ public class UrlProvider {
     public static final String CANTEEN = "http://www.gymkyjov.cz:8082";
     public static final String MARKS = "http://www.gymkyjov.cz/isas/prubezna-klasifikace.php";
     public static final String PLAY = "https://play.google.com/store/apps/details?id=com.mat.hyb.school.kgk.sas";
-    private static final String SUBSTITUTION_TOMORROW_URL = "http://www.gymkyjov.cz/isas/suplovani.php?zobraz=tridy-1&suplovani=%d&rezim=den&datum=%s";
+    private static final String SUBSTITUTION_TOMORROW_URL =
+            "http://www.gymkyjov.cz/isas/suplovani.php?zobraz=tridy-1&suplovani=%d&rezim=den&datum=%s";
     private static final String SUBSTITUTION_URL =
             "http://www.gymkyjov.cz/isas/suplovani.php?zobraz=tridy-1&suplovani=%d";
     private static final String TIMETABLE =
@@ -45,28 +45,30 @@ public class UrlProvider {
         if (prefs.teacherMode().get()) {
             url = TEACHER_SUBSTITUTION_TOMORROW_URL;
         }
-        return String.format(url, prefs.id().get(), getTomorrowDate());
+        return String.format(url, prefs.id().get(), getNextSchoolDayDate());
     }
 
-    private String getTomorrowDate() {
+    private String getNextSchoolDayDate() {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
-        int day = calendar.get(Calendar.DAY_OF_WEEK);
-        if (day == 6 && calendar.get(Calendar.HOUR_OF_DAY) >= 16) {
-            calendar.add(Calendar.DAY_OF_YEAR, 3);
-        } else if (day == 7) {
-            calendar.add(Calendar.DAY_OF_YEAR, 2);
-        } else {
-            calendar.add(Calendar.DAY_OF_YEAR, 1);
+        int daysToAdd = 1; // one for tomorrow
+        switch (calendar.get(Calendar.DAY_OF_WEEK)) {
+            case Calendar.FRIDAY:
+                daysToAdd = 3;
+                break;
+            case Calendar.SATURDAY:
+                daysToAdd = 2;
+                break;
         }
+        calendar.add(Calendar.DAY_OF_YEAR, daysToAdd);
         return String.format("%d-%d-%d", calendar.get(Calendar.YEAR),
-                calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DAY_OF_MONTH));
+                             calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DAY_OF_MONTH));
     }
 
     public String getSuggestedSubstitutionUrl() {
         Calendar calendar = Calendar.getInstance();
-        if (calendar.get(Calendar.HOUR_OF_DAY) >= 16 || calendar.get(Calendar.DAY_OF_WEEK) >= 6
-                || calendar.get(Calendar.DAY_OF_WEEK) == 1) {
+        if (calendar.get(Calendar.HOUR_OF_DAY) >= 16 || calendar.get(Calendar.DAY_OF_WEEK) > Calendar.FRIDAY
+            || calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
             return getSubstitutionTomorrowUrl();
         } else {
             return getSubstitutionTodayUrl();

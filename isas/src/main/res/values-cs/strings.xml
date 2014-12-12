@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="http://schemas.android.com/apk/res/android">
 
-    <string name="app_name">iSAS</string>
+    <string name="app_name">iKGK</string>
     <string name="action_settings">Nastavení</string>
     <string name="marks">Známky</string>
     <string name="substitution">Suplování</string>
     <string name="timetable">Rozvrh hodin</string>
     <string name="moodle">Moodle</string>
     <string name="canteen">Obědy</string>
-    <string name="website">školní web</string>
+    <string name="website">Školní web</string>
     <string name="backward">Zpět</string>
     <string name="forward">Vpřed</string>
     <string name="open">Otevřít v prohlížeči</string>

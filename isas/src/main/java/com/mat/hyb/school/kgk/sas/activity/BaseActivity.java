@@ -4,7 +4,6 @@ import android.annotation.TargetApi;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
@@ -56,9 +55,15 @@ public abstract class BaseActivity extends ActionBarActivity {
         ((BaseApplication) getApplication()).getTracker(BaseApplication.TrackerName.APP_TRACKER);
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        GoogleAnalytics.getInstance(this).reportActivityStop(this);
+    }
+
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void setStatusBarColor(int color) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.L) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(color);
         }
     }
@@ -67,12 +72,6 @@ public abstract class BaseActivity extends ActionBarActivity {
     protected void onStart() {
         super.onStart();
         GoogleAnalytics.getInstance(this).reportActivityStart(this);
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        GoogleAnalytics.getInstance(this).reportActivityStop(this);
     }
 
     public Tracker getTracker() {
