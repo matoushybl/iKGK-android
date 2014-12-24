@@ -69,5 +69,7 @@
     <string name="appSummary">Access school webs easier</string>
     <string name="introExplanation">Let\'s go through this simple intro to show you the best features and do some necessary settings.</string>
     <string name="teacher">Teacher</string>
+    <string name="pref_intro_title">Launch intro</string>
+    <string name="pref_intro_summary">Click to launch intro to show you features and do some settings</string>
 
 </resources>

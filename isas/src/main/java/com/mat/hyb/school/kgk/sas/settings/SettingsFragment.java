@@ -8,15 +8,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
-
 import com.android.colorpicker.ColorPickerDialog;
 import com.android.colorpicker.ColorPickerSwatch;
 import com.google.android.gms.analytics.HitBuilders;
 import com.mat.hyb.school.kgk.sas.R;
 import com.mat.hyb.school.kgk.sas.activity.BaseActivity;
+import com.mat.hyb.school.kgk.sas.intro.IntroActivity_;
 import com.mat.hyb.school.kgk.sas.utility.ClassID;
 import com.mat.hyb.school.kgk.sas.view.ClassChooserDialog;
-
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.res.ColorRes;
 import org.androidannotations.annotations.sharedpreferences.Pref;
@@ -32,6 +31,7 @@ public class SettingsFragment extends PreferenceFragment {
     private static final String SOURCE_KEY = "source";
     private static final String LIBS_KEY = "libs";
     private static final String THEME_KEY = "theme";
+    private static final String INTRO_KEY = "intro";
 
     @Pref
     protected ISASPrefs_ prefs;
@@ -141,6 +141,17 @@ public class SettingsFragment extends PreferenceFragment {
                     Intent intent = new Intent(Intent.ACTION_VIEW);
                     intent.setData(Uri.parse("https://github.com/matoushybl/iSASv2/tree/develop"));
                     startActivity(intent);
+                    return false;
+                }
+            });
+        }
+
+        Preference preference = findPreference(INTRO_KEY);
+        if (preference != null) {
+            preference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    IntroActivity_.intent(getActivity()).start();
                     return false;
                 }
             });

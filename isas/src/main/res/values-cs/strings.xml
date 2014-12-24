@@ -69,4 +69,6 @@
     <string name="introExplanation">Projděme si nyní tento průvodce, ve kterém Vám ukážeme nejlepší funkce a provedeme nezbytná nastavení.</string>
     <string name="appSummary">Přistupujte na školní weby jednodušeji</string>
     <string name="teacher">Učitel</string>
+    <string name="pref_intro_title">Spustit průvodce</string>
+    <string name="pref_intro_summary">Klikněte pro spuštění průvodce, který Vám ukáže funkce a některá nastavení.</string>
 </resources>

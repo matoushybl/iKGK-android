@@ -2,18 +2,26 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory android:title="@string/general_group_title">
+
         <CheckBoxPreference
             android:key="externalBrowserMode"
             android:summary="@string/open_preference_summary"
             android:title="@string/open_preference_title"/>
+
         <CheckBoxPreference
             android:key="browserShortcut"
             android:summary="@string/pref_shortcut_summary"
             android:title="@string/pref_shortcut_title"/>
+
         <Preference
             android:key="class"
             android:summary="@string/change_class_summary"
             android:title="@string/change_class_title"/>
+
+        <Preference
+            android:key="intro"
+            android:title="@string/pref_intro_title"
+            android:summary="@string/pref_intro_summary"/>
 
         <CheckBoxPreference
             android:defaultValue="true"
