@@ -3,14 +3,11 @@ package com.mat.hyb.school.kgk.sas.activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.provider.Browser;
-
 import com.mat.hyb.school.kgk.sas.R;
+import com.mat.hyb.school.kgk.sas.intro.IntroActivity_;
 import com.mat.hyb.school.kgk.sas.settings.ISASPrefs_;
-import com.mat.hyb.school.kgk.sas.utility.ClassID;
 import com.mat.hyb.school.kgk.sas.utility.LunchReminderHelper;
 import com.mat.hyb.school.kgk.sas.utility.UrlProvider;
-import com.mat.hyb.school.kgk.sas.view.ClassChooserDialog;
-
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
@@ -96,16 +93,8 @@ public class MainActivity extends BaseActivity {
     protected void init() {
         getSupportActionBar().setElevation(0);
         if (prefs.firstRun().get()) {
-            ClassChooserDialog dialog = new ClassChooserDialog(this);
-            dialog.setSelectedListener(new ClassChooserDialog.ClassSelectedListener() {
-                @Override
-                public void selected(ClassID id) {
-                    prefs.id().put(id.getId());
-                    prefs.firstRun().put(false);
-                    sendEvent(CATEGORY_ID, String.valueOf(id.getId()));
-                }
-            });
-            dialog.show();
+            IntroActivity_.intent(this).start();
+            finish();
         }
         lunchReminderHelper.enableTiming();
     }

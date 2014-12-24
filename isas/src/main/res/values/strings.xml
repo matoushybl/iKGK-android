@@ -50,5 +50,24 @@
     <string name="notification_lunch_content">Month is almost over, lunches are coming.</string>
     <string name="pref_lunch_reminder_title">Remind lunch choosing</string>
     <string name="pref_lunch_reminder_summary">Enable to receive notification when you should choose lunch</string>
+    <string name="theme_explanation">We are aware of the fact that not everyone likes the default orange color of our school, some of the people eve hate it. Therefore we integrated a theme switcher, so that everyone can choose the right color that will make using this app an awesome experience.</string>
+    <string name="intro_browser_explanation">We\'ve kept in mind that not everyone likes the way that this app handles pages itself although it was designed very efficiently. Therefore we\'ve added option to Settings that let\'s you make the pages being opened in the browser that you normally use on your device.</string>
+    <string name="intro_shortcut_explanation">The main goal of this app was speed at which you can get information, but opening the app for every time you wanted to choose your meals is not efficient at all. That\'s why we\'ve added shortcuts. Shortcuts are icons that you can create on your desktop by clicking in each section\'s menu like it is shown in the picture. Then instead of opening this app, simply click on the shortcut and voilà there is the thing that you\'ve wanted to see.</string>
+    <string name="previousButtonText">Previous</string>
+    <string name="nextButtonText">Next</string>
+    <string name="endTitle">Congrats, you are ready to go.</string>
+    <string name="end_summary">We hope that you\'ll enjoy using this app and that you\'ll somehow survive studying at this school. If you find a bug please don\'t hesitate to contact me so that I can fix this as soon as possible.</string>
+    <string name="extensionButtonText">Our Chrome extension</string>
+    <string name="browserTitle">Don\'t like the inbuilt browser?</string>
+    <string name="shortcutTitle">So you want to see things even faster?</string>
+    <string name="themeTitle">Select a color that you like.</string>
+    <string name="typeTitle">Are you a teacher or a student?</string>
+    <string name="typeSummary">To bring you an amazing experience using this app we need to know a few things about you.</string>
+    <string name="typeSelectClassText">Please select your class</string>
+    <string name="finishButton">Finish</string>
+    <string name="typeSelectTeacherText">Please select yourself</string>
+    <string name="appSummary">Access school webs easier</string>
+    <string name="introExplanation">Let\'s go through this simple intro to show you the best features and do some necessary settings.</string>
+    <string name="teacher">Teacher</string>
 
 </resources>

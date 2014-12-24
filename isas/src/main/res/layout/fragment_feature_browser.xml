@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/container"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/green">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            style="@style/Base.TextAppearance.AppCompat.Headline"
+            android:textColor="@android:color/white"
+            android:text="@string/browserTitle"/>
+
+        <TextView
+            android:layout_marginTop="32dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Base.TextAppearance.AppCompat.Body1"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:text="@string/intro_browser_explanation"/>
+
+        <ImageView
+            android:layout_marginTop="32dp"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:src="@drawable/browser"
+            android:scaleType="fitCenter"/>
+
+    </LinearLayout>
+
+</ScrollView>

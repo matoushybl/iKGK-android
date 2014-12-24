@@ -77,6 +77,15 @@ public enum TeacherID {
         return CVR;
     }
 
+    public static TeacherID getEnumById(int id) {
+        for (TeacherID teacherID : TeacherID.values()) {
+            if (teacherID.getId() == id) {
+                return teacherID;
+            }
+        }
+        return CVR;
+    }
+
     public String getName() {
         return name;
     }

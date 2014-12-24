@@ -50,4 +50,23 @@
     <string name="notification_lunch_content">Obědy na nový měsíc by měly být nyní dostupné.</string>
     <string name="pref_lunch_reminder_summary">Povolte pro připomínání, že je čas nastavit si obědy</string>
     <string name="pref_lunch_reminder_title">Připomínat nastavování obědů</string>
+    <string name="browserTitle">Nelíbí se Vám vestavěný prohlížeč?</string>
+    <string name="endTitle">Blahopřejeme, vše je hotovo.</string>
+    <string name="end_summary">Doufáme, že se Vám používání této aplikace bude líbit a tak nějak přežijete na této škole. Pokud najdete chybu, neváhejte nás kontaktovat, abychom ji mohli opravit co nejdříve.</string>
+    <string name="extensionButtonText">Rozšíření pro Chrome</string>
+    <string name="finishButton">Dokončit</string>
+    <string name="intro_browser_explanation">Počítali jsme s tím, že ne každému vyhovuje způsob, jakým aplikace zachází se stránkami, i když to bylo navrženo velmi obezřetně. Proto jsme do aplikace přidali možnost do nastavení, díky které lze povolit, že se budou stránky zobrazovat ve standardním prohlížeči Vašeho zařízení.</string>
+    <string name="intro_shortcut_explanation">Největším cílem této aplikace byla rychlost, kterou získáte informace, ale otevírání aplikace pokáždé, když chcete nastavit obědy není rychlé ani náhodou. Proto jsme přidali zkratky. Zkratky jsou ikony, které si můžete vytvořit na ploše pomocí kliknutí v menu jednotlívé sekce, jak lze vidět na obrázku. Pak místo zdlouhavého otevírání aplikace stačí jednoduše kliknout na ikonu a voilà zobrazí se Vám požadovaná stránka.</string>
+    <string name="nextButtonText">Další</string>
+    <string name="previousButtonText">Předchozí</string>
+    <string name="shortcutTitle">Chcete vidět stránky ještě rychleji?</string>
+    <string name="themeTitle">Vyberte barvu, která se Vám líbí.</string>
+    <string name="theme_explanation">Jsme si vědomi toho, že ne všem se líbí výchozí oranžová barva, barva naší školy, někteří ji dokonce nenávidí. Proto jsme přidali přepínač témat, takže si nyní každý může vybrat barvu, která zaručí, že používání této aplikace bude úžasný zážitek.</string>
+    <string name="typeSelectClassText">Prosím zvolte třídu</string>
+    <string name="typeSelectTeacherText">Prosím zvolte sebe</string>
+    <string name="typeSummary">Abychom Vám zaručili skvělou zkušenost, potřebujeme vědět několik informací o Vás.</string>
+    <string name="typeTitle">Jste učitel nebo student?</string>
+    <string name="introExplanation">Projděme si nyní tento průvodce, ve kterém Vám ukážeme nejlepší funkce a provedeme nezbytná nastavení.</string>
+    <string name="appSummary">Přistupujte na školní weby jednodušeji</string>
+    <string name="teacher">Učitel</string>
 </resources>

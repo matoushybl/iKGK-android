@@ -32,4 +32,9 @@
         <item name="colorPrimary">@color/purple</item>
         <item name="colorPrimaryDark">@color/darkPurple</item>
     </style>
+
+    <style name="AppTheme.Intro" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="colorAccent">@android:color/white</item>
+    </style>
 </resources>

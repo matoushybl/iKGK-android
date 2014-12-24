@@ -4,6 +4,7 @@
     <color name="primary">#FF9800</color>
     <color name="primaryDark">#E65100</color>
     <color name="tileBackground">#d3d3d3</color>
+    <color name="grey">#BDBDBD</color>
 
     <color name="orange">#FF9800</color>
     <color name="blue">#3F51B5</color>

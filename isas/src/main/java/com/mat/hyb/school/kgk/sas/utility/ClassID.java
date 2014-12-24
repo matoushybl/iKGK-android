@@ -55,6 +55,15 @@ public enum ClassID {
         return SXA;
     }
 
+    public static ClassID getEnumById(int id) {
+        for (ClassID classID : ClassID.values()) {
+            if (classID.getId() == id) {
+                return classID;
+            }
+        }
+        return SPA;
+    }
+
     public String getName() {
         return name;
     }

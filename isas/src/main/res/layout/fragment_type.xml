@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/red">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            style="@style/Base.TextAppearance.AppCompat.Headline"
+            android:textColor="@android:color/white"
+            android:text="@string/typeTitle"/>
+
+        <TextView
+            android:layout_marginTop="32dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            style="@style/Base.TextAppearance.AppCompat.Body1"
+            android:text="@string/typeSummary"/>
+
+        <RadioGroup
+            android:layout_marginTop="32dp"
+            android:id="@+id/typeRadioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp"
+            android:checkedButton="@+id/studentRadio">
+
+            <RadioButton
+                android:id="@+id/studentRadio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Student"
+                android:textSize="20sp"
+                android:textColor="@android:color/white"/>
+
+            <RadioButton
+                android:id="@+id/teacherRadio"
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/teacher"
+                android:textSize="20sp"
+                android:textColor="@android:color/white"/>
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/selectHeader"
+            android:layout_marginTop="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@android:color/white"
+            android:text="@string/typeSelectClassText"/>
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_marginTop="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</ScrollView>

@@ -37,6 +37,9 @@
                 <action android:name="android.intent.action.MAIN"/>
             </intent-filter>
         </activity>
+        <activity
+            android:name=".intro.IntroActivity_"
+            android:theme="@style/AppTheme.Intro"/>
 
         <meta-data
             android:name="com.google.android.gms.version"

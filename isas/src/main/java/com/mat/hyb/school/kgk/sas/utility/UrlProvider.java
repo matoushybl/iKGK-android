@@ -17,6 +17,8 @@ public class UrlProvider {
     public static final String CANTEEN = "http://www.gymkyjov.cz:8082";
     public static final String MARKS = "http://www.gymkyjov.cz/isas/prubezna-klasifikace.php";
     public static final String PLAY = "https://play.google.com/store/apps/details?id=com.mat.hyb.school.kgk.sas";
+    public static final String EXTENSION =
+            "https://chrome.google.com/webstore/detail/kgk-weby/idkpjkgfcfodmdandpionmmiepkighpl?hl=cs";
     private static final String SUBSTITUTION_TOMORROW_URL =
             "http://www.gymkyjov.cz/isas/suplovani.php?zobraz=tridy-1&suplovani=%d&rezim=den&datum=%s";
     private static final String SUBSTITUTION_URL =
