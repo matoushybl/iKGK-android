@@ -42,6 +42,7 @@ public class IntroActivity extends BaseActivity {
 
     @AfterViews
     protected void init() {
+        setTheme(R.style.AppTheme_Intro);
         AppInfoFragment appInfoFragment = AppInfoFragment_.builder().build();
         adapter = new IntroAdapter(getSupportFragmentManager());
         adapter.addFragment(appInfoFragment);
