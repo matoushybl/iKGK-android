@@ -3,11 +3,11 @@ package com.mat.hyb.school.kgk.sas.intro;
 import android.annotation.TargetApi;
 import android.os.Build;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import com.mat.hyb.school.kgk.sas.R;
+import com.mat.hyb.school.kgk.sas.activity.BaseActivity;
 import com.mat.hyb.school.kgk.sas.activity.MainActivity_;
 import com.mat.hyb.school.kgk.sas.settings.ISASPrefs_;
 import org.androidannotations.annotations.AfterViews;
@@ -21,7 +21,7 @@ import org.androidannotations.annotations.sharedpreferences.Pref;
  * @author <a href="mailto:hyblmatous@gmail.com">Matous Hybl</a>
  */
 @EActivity(R.layout.activity_intro)
-public class IntroActivity extends ActionBarActivity {
+public class IntroActivity extends BaseActivity {
 
     @ViewById
     protected ViewPager viewPager;
@@ -85,6 +85,7 @@ public class IntroActivity extends ActionBarActivity {
         } else {
             prefs.firstRun().put(false);
             MainActivity_.intent(this).start();
+            sendEvent(CATEGORY_ID, String.valueOf(prefs.id().get()));
             finish();
         }
     }
