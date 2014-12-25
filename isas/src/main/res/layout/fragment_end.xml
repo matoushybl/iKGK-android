@@ -35,7 +35,7 @@
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/pink"
+            android:textColor="@color/endFragmentButtonTextColor"
             android:text="@string/rate_title"/>
 
         <Button
@@ -44,7 +44,7 @@
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/pink"
+            android:textColor="@color/endFragmentButtonTextColor"
             android:text="@string/extensionButtonText"/>
     </LinearLayout>
 </ScrollView>
