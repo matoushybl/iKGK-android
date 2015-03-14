@@ -1,12 +1,9 @@
 package com.mat.hyb.school.kgk.sas.activity;
 
 import android.view.Menu;
-
 import com.mat.hyb.school.kgk.sas.R;
 import com.mat.hyb.school.kgk.sas.settings.ISASPrefs_;
-import com.mat.hyb.school.kgk.sas.utility.ClassID;
-import com.mat.hyb.school.kgk.sas.view.ClassChooserDialog;
-
+import com.mat.hyb.school.kgk.sas.utility.ChooserDialogCreator;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.OptionsMenu;
@@ -35,14 +32,12 @@ public class TimetableActivity extends BrowserActivity {
     @OptionsItem
     protected void otherClass() {
         setSupportProgressBarIndeterminateVisibility(true);
-        ClassChooserDialog dialog = new ClassChooserDialog(this);
-        dialog.setSelectedListener(new ClassChooserDialog.ClassSelectedListener() {
+        ChooserDialogCreator.showDialog(this, new ChooserDialogCreator.OnChoseListener() {
             @Override
-            public void selected(ClassID id) {
-                getWebView().loadUrl(getUrlProvider().getTimetableUrl(id.getId()));
+            public void onChose(long id, boolean isTeacher) {
+                getWebView().loadUrl(getUrlProvider().getTimetableUrl(id));
             }
         });
-        dialog.show();
     }
 
     @Override

@@ -13,6 +13,7 @@ import com.mat.hyb.school.kgk.sas.settings.ISASPrefs_;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.sharedpreferences.Pref;
 
@@ -42,18 +43,8 @@ public class IntroActivity extends ActionBarActivity {
     @AfterViews
     protected void init() {
         AppInfoFragment appInfoFragment = AppInfoFragment_.builder().build();
-        AppTypeFragment appTypeFragment = AppTypeFragment_.builder().build();
-        ThemeFragment themeFragment = ThemeFragment_.builder().build();
-        FeatureBrowserFragment featureBrowserFragment = FeatureBrowserFragment_.builder().build();
-        FeatureShortcutFragment featureShortcutFragment = FeatureShortcutFragment_.builder().build();
-        EndFragment endFragment = EndFragment_.builder().build();
         adapter = new IntroAdapter(getSupportFragmentManager());
         adapter.addFragment(appInfoFragment);
-        adapter.addFragment(appTypeFragment);
-        adapter.addFragment(themeFragment);
-        adapter.addFragment(featureShortcutFragment);
-        adapter.addFragment(featureBrowserFragment);
-        adapter.addFragment(endFragment);
         viewPager.setAdapter(adapter);
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -112,5 +103,20 @@ public class IntroActivity extends ActionBarActivity {
             getWindow().setStatusBarColor(color);
         }
         buttonBar.setBackgroundColor(color);
+    }
+
+    /**
+     * Fragment use this to notify when data is loaded and button ca be shown
+     */
+    @UiThread
+    public void onDataLoaded() {
+        // needs to be created now because the AppTypeFragment needs new data to be loaded from Torch
+        adapter.addFragment(AppTypeFragment_.builder().build());
+        adapter.addFragment(ThemeFragment_.builder().build());
+        adapter.addFragment(FeatureShortcutFragment_.builder().build());
+        adapter.addFragment(FeatureBrowserFragment_.builder().build());
+        adapter.addFragment(EndFragment_.builder().build());
+        adapter.notifyDataSetChanged();
+        nextButton.setVisibility(View.VISIBLE);
     }
 }
