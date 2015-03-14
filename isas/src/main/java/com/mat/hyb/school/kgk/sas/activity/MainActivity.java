@@ -6,31 +6,60 @@ import android.provider.Browser;
 import com.mat.hyb.school.kgk.sas.R;
 import com.mat.hyb.school.kgk.sas.intro.IntroActivity_;
 import com.mat.hyb.school.kgk.sas.settings.ISASPrefs_;
+import com.mat.hyb.school.kgk.sas.utility.DownloadingHelper;
 import com.mat.hyb.school.kgk.sas.utility.LunchReminderHelper;
 import com.mat.hyb.school.kgk.sas.utility.UrlProvider;
+import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.sharedpreferences.Pref;
+import org.json.JSONException;
+
+import java.io.IOException;
 
 @OptionsMenu(R.menu.main)
 @EActivity(R.layout.activity_main)
 public class MainActivity extends BaseActivity {
 
     @Bean
-    protected UrlProvider urlProvider;
+    UrlProvider urlProvider;
 
     @Bean
-    protected LunchReminderHelper lunchReminderHelper;
+    LunchReminderHelper lunchReminderHelper;
+
+    @Bean
+    DownloadingHelper downloadingHelper;
 
     @Pref
-    protected ISASPrefs_ prefs;
+    ISASPrefs_ prefs;
+
+    @AfterInject
+    @Background
+    void loadClasses() {
+        try {
+            downloadingHelper.loadClasses();
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @AfterInject
+    @Background
+    void loadTeachers() {
+        try {
+            downloadingHelper.loadTeachers();
+        } catch (JSONException | IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Click
-    protected void marksClicked() {
+    void marksClicked() {
         sendEvent(CATEGORY_PAGE, "marks");
         if (prefs.externalBrowserMode().get()) {
             openInBrowser(UrlProvider.MARKS);
@@ -40,7 +69,7 @@ public class MainActivity extends BaseActivity {
     }
 
     @Click
-    protected void timetableClicked() {
+    void timetableClicked() {
         sendEvent(CATEGORY_PAGE, "timetable");
         if (prefs.externalBrowserMode().get()) {
             openInBrowser(urlProvider.getOurTimetableUrl());
@@ -50,7 +79,7 @@ public class MainActivity extends BaseActivity {
     }
 
     @Click
-    protected void canteenClicked() {
+    void canteenClicked() {
         sendEvent(CATEGORY_PAGE, "canteen");
         if (prefs.externalBrowserMode().get()) {
             openInBrowser(UrlProvider.CANTEEN);
@@ -60,7 +89,7 @@ public class MainActivity extends BaseActivity {
     }
 
     @Click
-    protected void moodleClicked() {
+    void moodleClicked() {
         sendEvent(CATEGORY_PAGE, "moodle");
         if (prefs.externalBrowserMode().get()) {
             openInBrowser(UrlProvider.MOODLE);
@@ -70,7 +99,7 @@ public class MainActivity extends BaseActivity {
     }
 
     @Click
-    protected void websiteClicked() {
+    void websiteClicked() {
         sendEvent(CATEGORY_PAGE, "website");
         if (prefs.externalBrowserMode().get()) {
             openInBrowser(UrlProvider.WEBSITE);
@@ -80,7 +109,7 @@ public class MainActivity extends BaseActivity {
     }
 
     @Click
-    protected void substitutionClicked() {
+    void substitutionClicked() {
         sendEvent(CATEGORY_PAGE, "substitution");
         if (prefs.externalBrowserMode().get()) {
             openInBrowser(urlProvider.getSuggestedSubstitutionUrl());
@@ -90,7 +119,7 @@ public class MainActivity extends BaseActivity {
     }
 
     @AfterViews
-    protected void init() {
+    void init() {
         getSupportActionBar().setElevation(0);
         if (prefs.firstRun().get()) {
             IntroActivity_.intent(this).start();
@@ -100,12 +129,12 @@ public class MainActivity extends BaseActivity {
     }
 
     @OptionsItem
-    protected void rate() {
+    void rate() {
         openInBrowser(UrlProvider.PLAY);
     }
 
     @OptionsItem
-    protected void settings() {
+    void settings() {
         SettingsActivity_.intent(this).start();
     }
 

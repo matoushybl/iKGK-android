@@ -20,13 +20,6 @@ public class EndFragment extends BaseIntroFragment {
         startActivity(intent);
     }
 
-    @Click
-    protected void extensionButtonClicked() {
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse(UrlProvider.EXTENSION));
-        startActivity(intent);
-    }
-
     @Override
     protected int getMainColor() {
         return R.color.pink;
