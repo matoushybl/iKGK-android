@@ -15,7 +15,8 @@ Used libraries
  publicly accessible, one for teachers and one for classes
 * change links to these files, right now the app is loading data from my github.io
 * change package of the app, this one is just terrible because of it's length
-* check if isas's url structure has changed adn fix it
+* check if isas's url structure has changed and fix it
+* update all libraries especially appcompat
 
 **Feel free to contact me for any help, I'll be glad that someone wants to continue this app**
 
