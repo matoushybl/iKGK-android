@@ -19,7 +19,7 @@
     <string name="sign_in_to">Přihlásit se k <xliff:g id="hostname">%s1</xliff:g> \"<xliff:g id="realm">%s2</xliff:g>\"</string>
     <string name="class_dialog_title">Nastavení třídy…</string>
     <string name="my_class">Moje třída</string>
-    <string name="other_class">Jiná třída</string>
+    <string name="other_class">Jiný rozvrh</string>
     <string name="today">Dnes</string>
     <string name="nextDay">Další den</string>
     <string name="open_preference_title">Otevírat v prohlížeči</string>
@@ -71,4 +71,7 @@
     <string name="teacher">Učitel</string>
     <string name="pref_intro_title">Spustit průvodce</string>
     <string name="pref_intro_summary">Klikněte pro spuštění průvodce, který Vám ukáže funkce a některá nastavení.</string>
+    <string name="networkDialogNegativeButton">Zavřít</string>
+    <string name="networkDialogTitle">Problém s připojením</string>
+    <string name="networkDialogMessage">Bohužel není dostupné žádné internetové připojení. Tato aplikace jej potřebuje k prvotnímu nastavení. Vraťte se prosím až bude připojení dostupné.</string>
 </resources>

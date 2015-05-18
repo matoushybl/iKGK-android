@@ -19,7 +19,7 @@
     <string name="sign_in_to">Sign in to <xliff:g id="hostname">%s1</xliff:g> \"<xliff:g id="realm">%s2</xliff:g>\"</string>
     <string name="class_dialog_title">Set class…</string>
     <string name="my_class">My class</string>
-    <string name="other_class">Other class</string>
+    <string name="other_class">Other timetable</string>
     <string name="today">Today</string>
     <string name="nextDay">Next day</string>
     <string name="open_preference_title">Enable browser opening</string>
@@ -71,5 +71,8 @@
     <string name="teacher">Teacher</string>
     <string name="pref_intro_title">Launch intro</string>
     <string name="pref_intro_summary">Click to launch intro to show you features and do some settings</string>
+    <string name="networkDialogTitle">Network problem</string>
+    <string name="networkDialogMessage">Unfortunately, there is no internet connection available. This app requieres internet connection to set up correctly. Please return when there is internet connection available.</string>
+    <string name="networkDialogNegativeButton">Close</string>
 
 </resources>

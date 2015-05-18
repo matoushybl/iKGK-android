@@ -2,6 +2,7 @@ package com.mat.hyb.school.kgk.sas.settings;
 
 import org.androidannotations.annotations.sharedpreferences.DefaultBoolean;
 import org.androidannotations.annotations.sharedpreferences.DefaultInt;
+import org.androidannotations.annotations.sharedpreferences.DefaultLong;
 import org.androidannotations.annotations.sharedpreferences.SharedPref;
 
 /**
@@ -12,7 +13,16 @@ public interface ISASPrefs {
 
     boolean teacherMode();
 
+    @Deprecated
     int id();
+
+    /**
+     * Used in the new version with network downloading of classes
+     *
+     * @return id of the torch object
+     */
+    @DefaultLong(69)
+    long torchId();
 
     boolean externalBrowserMode();
 

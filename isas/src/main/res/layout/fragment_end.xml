@@ -12,39 +12,30 @@
         android:padding="16dp">
 
         <TextView
-            android:layout_marginTop="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:gravity="center"
-            style="@style/Base.TextAppearance.AppCompat.Headline"
+            android:text="@string/endTitle"
             android:textColor="@android:color/white"
-            android:text="@string/endTitle"/>
+            style="@style/Base.TextAppearance.AppCompat.Headline"/>
 
         <TextView
-            android:layout_marginTop="32dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/Base.TextAppearance.AppCompat.Body1"
+            android:layout_marginTop="32dp"
             android:gravity="center"
+            android:text="@string/end_summary"
             android:textColor="@android:color/white"
-            android:text="@string/end_summary"/>
+            style="@style/Base.TextAppearance.AppCompat.Body1"/>
 
         <Button
             android:id="@+id/rateButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/endFragmentButtonTextColor"
-            android:text="@string/rate_title"/>
-
-        <Button
-            android:id="@+id/extensionButton"
-            android:layout_marginTop="16dp"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/endFragmentButtonTextColor"
-            android:text="@string/extensionButtonText"/>
+            android:text="@string/rate_title"
+            android:textColor="@color/endFragmentButtonTextColor"/>
     </LinearLayout>
 </ScrollView>
