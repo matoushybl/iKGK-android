@@ -68,6 +68,14 @@ public class UrlProvider {
         return String.format(url, id);
     }
 
+    public String getClassTimetable(long id) {
+        return String.format(TIMETABLE, id);
+    }
+
+    public String getTeacherTimetable(long id) {
+        return String.format(TEACHER_TIMETABLE, id);
+    }
+
     public String getOurTimetableUrl() {
         return getTimetableUrl(prefs.torchId().get());
     }

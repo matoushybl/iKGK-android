@@ -6,8 +6,18 @@ This is second version of my access simplifying app for our school's website
 Used libraries
 ==============
 * Android Annotations
-* SystemBarTint
-* ActionBarSherlock
+* Appcompat
+* Torch
+
+#IMPORTANT - for future maintainer
+##TODO
+* Ask school IT to create API, with json files - there need to be 2 files on their server,
+ publicly accessible, one for teachers and one for classes
+* change links to these files, right now the app is loading data from my github.io
+* change package of the app, this one is just terrible because of it's length
+* check if isas's url structure has changed adn fix it
+
+**Feel free to contact me for any help, I'll be glad that someone wants to continue this app**
 
 License
 =======

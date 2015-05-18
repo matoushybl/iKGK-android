@@ -35,7 +35,11 @@ public class TimetableActivity extends BrowserActivity {
         ChooserDialogCreator.showDialog(this, new ChooserDialogCreator.OnChoseListener() {
             @Override
             public void onChose(long id, boolean isTeacher) {
-                getWebView().loadUrl(getUrlProvider().getTimetableUrl(id));
+                String url = getUrlProvider().getClassTimetable(id);
+                if(isTeacher) {
+                    url = getUrlProvider().getTeacherTimetable(id);
+                }
+                getWebView().loadUrl(url);
             }
         });
     }
